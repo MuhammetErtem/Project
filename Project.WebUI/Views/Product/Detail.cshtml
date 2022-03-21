@@ -1,0 +1,278 @@
+﻿@model ProductVM
+    <!-- Shop Details Section Begin -->
+    <section class="shop-details">
+        <div class="product__details__pic">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="product__details__breadcrumb">
+                            <a href="/index.html">Ana Sayfa</a>
+                            @*<a href="/shop.html">@Model.Product.Brand.Name</a>*@
+                            <span>@Model.Product.Name</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-3">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">
+                                    <div class="product__thumb__pic set-bg" data-setbg="@Model.Product.ProductPictures.FirstOrDefault().Path">
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">
+                                    <div class="product__thumb__pic set-bg" data-setbg="/img/shop-details/thumb-2.png">
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">
+                                    <div class="product__thumb__pic set-bg" data-setbg="/img/shop-details/thumb-3.png">
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-4" role="tab">
+                                    <div class="product__thumb__pic set-bg" data-setbg="/img/shop-details/thumb-4.png">
+                                        <i class="fa fa-play"></i>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6 col-md-9">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                                <div class="product__details__pic__item">
+                                    <img src=@Model.Product.ProductPictures.FirstOrDefault().Path alt="">
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tabs-2" role="tabpanel">
+                                <div class="product__details__pic__item">
+                                    <img src="/img/shop-details/product-big-3.png" alt="">
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tabs-3" role="tabpanel">
+                                <div class="product__details__pic__item">
+                                    <img src="/img/shop-details/product-big.png" alt="">
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tabs-4" role="tabpanel">
+                                <div class="product__details__pic__item">
+                                    <img src="/img/shop-details/product-big-4.png" alt="">
+                                    <a href="https://www.youtube.com/watch?v=8PJ3_p7VqHw&list=RD8PJ3_p7VqHw&start_radio=1" class="video-popup"><i class="fa fa-play"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="product__details__content">
+            <div class="container">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="product__details__text">
+                            <h4>@Model.Product.Name</h4>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                                <span> 5 Değerlendirme</span>
+                            </div>
+                            <h3>@Model.Product.Price ₺<span>@Model.Product.DiscountPrice ₺</span></h3>
+                            <p>
+                                @Model.Product.Description
+                            </p>
+                            @*<div class="product__details__option">
+                                <div class="product__details__option__size">
+                                    <span>Size:</span>
+                                    <label for="xxl">
+                                        xxl
+                                        <input type="radio" id="xxl">
+                                    </label>
+                                    <label class="active" for="xl">
+                                        xl
+                                        <input type="radio" id="xl">
+                                    </label>
+                                    <label for="l">
+                                        l
+                                        <input type="radio" id="l">
+                                    </label>
+                                    <label for="sm">
+                                        s
+                                        <input type="radio" id="sm">
+                                    </label>
+                                </div>
+                                <div class="product__details__option__color">
+                                    <span>Color:</span>
+                                    <label class="c-1" for="sp-1">
+                                        <input type="radio" id="sp-1">
+                                    </label>
+                                    <label class="c-2" for="sp-2">
+                                        <input type="radio" id="sp-2">
+                                    </label>
+                                    <label class="c-3" for="sp-3">
+                                        <input type="radio" id="sp-3">
+                                    </label>
+                                    <label class="c-4" for="sp-4">
+                                        <input type="radio" id="sp-4">
+                                    </label>
+                                    <label class="c-9" for="sp-9">
+                                        <input type="radio" id="sp-9">
+                                    </label>
+                                </div>
+                            </div>*@
+                        <div class="product__details__cart__option">
+                            <div class="quantity">
+                                <div class="pro-qty">
+                                    <input type="text" value="1" stokMiktari="@Model.Product.Stock" urunID="@Model.Product.ID"><span class="istenenStokDurum"></span>
+                                </div>
+                            </div>
+                            @if (Model.Product.Stock > 0)
+                            {
+                                <button class="primary-btn" style="color:#ffffff; background-color: #683182">Hemen Al</button>
+                            }
+                            else
+                            {
+                                <button class="primary-btn" style="color: #ffffff; background-color: gray">Tükendi</button>
+
+                            }
+                        </div>
+                            
+                            <div class="product__details__last__option">
+                                <h5><span>Garantili Güvenli Ödeme </span></h5>
+                                <img src="/img/shop-details/details-payment.png" alt="">
+                                <ul>
+                                    @*<li><span>Kategori:</span>@Model.Product.Category.Name</li>
+                                    <li><span>Marka:</span>@Model.Product.Brand.Name</li>*@
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="product__details__tab">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab" href="#tabs-5"
+                                       role="tab">Ürün Hakkında</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#tabs-6" role="tab">
+                                        Teslimat ve İade
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#tabs-7" role="tab">
+                                        Sıkça Sorulan Sorular
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tabs-5" role="tabpanel">
+                                    <div class="product__details__tab__content">
+                                        <p class="note">@Model.Product.Name
+                                        </p>
+                                        <div class="product__details__tab__content__item">
+                                            <h5>Ürün Açıklaması</h5>
+                                            <p>@Model.Product.Description</p>
+                                        </div>
+                                        <div class="product__details__tab__content__item">
+                                            <h5>Ürün Detayı</h5>
+                                            <p>@Model.Product.Detail</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tabs-6" role="tabpanel">
+                                    <div class="product__details__tab__content">
+                                        <div class="product__details__tab__content__item">
+                                            <h5>Teslimat</h5>
+                                            <p>
+                                                • Siparişleriniz, belirtilen tahmini teslimat tarihinde kargo firması tarafından size ulaştırılır.
+                                            </p>
+                                        </div>
+                                        <div class="product__details__tab__content__item">
+                                            <h5>İade</h5>
+                                            <p>
+                                                • Satın aldığınız herhangi bir ürünü iade şartlarına uygun olması koşuluyla, siparişinizin size ulaştığı günü takip eden 15 gün içinde ücretsiz iade edebilirsiniz.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tabs-7" role="tabpanel">
+                                    <div class="product__details__tab__content">
+                                        <div class="product__details__tab__content__item">
+                                            <h5>Ürün iade şartları nelerdir?</h5>
+                                            <p>
+                                                “Sebep Göstermeden Cayma Hakkı" ürünü teslim aldığınızdan itibaren 15 gün’dür. İade işlemlerinin başlaması için iade etmek istediğiniz ürünün 15 gün içinde depomuza ulaşması gerekmektedir.
+                                            </p>
+                                            <p>
+                                                İade etmek istediğiniz ürünün ambalajının hasar görmemiş, kullanılmamış; barkodunun zedelenmemiş, kopmamış olması gerekir.
+                                            </p>
+                                            <p>
+                                                İade etmek istediğiniz ürün/ürünleri orijinal kutusu ve tüm aksesuarları ile göndermelisiniz. Örnek: ayakkabıları kutuları, gözlük, cüzdan vb.
+                                            </p>
+                                            <p>
+                                                Tek kullanımlık, hızlı bozulan, son kullanma tarihi geçme olasılığı taşıyan ürünlerde yasa gereği cayma hakkı kullanılamaz.
+                                            </p>
+                                            <p>
+                                                Kozmetik ve kişisel bakım ürünleri, iç giyim ürünleri, mayo, bikini, kitap, kopyalanabilir yazılım ve programlar, DVD, VCD, CD, kasetler ile kırtasiye sarf malzemeleri (toner, kartuş, şerit vb.) ambalajı açılmamış, denenmemiş, bozulmamış ve kullanılmamış olmaları halinde iade edilebilir.
+                                            </p>
+                                        </div>
+                                        <div class="product__details__tab__content__item">
+                                            <h5>Kolay İade ile siparişimi nasıl iade edebilirim?</h5>
+                                            <p>
+                                                PetShop.com üyeliğinize giriş yapınız.
+                                            </p>
+                                            <p>
+                                                “Hesabınız”da yer alan “Siparilerim” listesinden ilgili siparişinizi seçiniz.
+                                            </p>
+                                            <p>
+                                                “Sipariş Detayı” sayfasından “Kolay İade” butonuna basınız.
+                                            </p>
+                                            <p>
+                                                İade edilecek ürün/ürünleri ve iade nedeni seçiniz. Siparişinizde aynı üründen birden fazla varsa adet seçimi yapmayı unutmayın.
+                                            </p>
+                                            <p>
+                                                Ekranda çıkan kodu ve ilgili kargo firmasını not alınız.
+                                            </p>
+                                            <p>
+                                                İlgili kargo firması aracılığla kod geçerlilik süresi içinde ücretsiz gönderim yapınız.
+                                            </p>
+                                            <p>
+                                                İrsaliye formunu, iade edeceğiniz ürünle aynı pakette göndermeniz gerekmektedir.Her ürün için alınan iade kodu ile sadece ilgili ürünler aynı pakette gönderilmelidir.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Shop Details Section End -->
+    <!-- Related Section Begin -->
+    <section class="related spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="related-title">Benzer Ürünler</h3>
+                </div>
+            </div>
+            <div class="row">
+                @foreach (Product p in Model.SimilarProducts)
+                {
+                    <partial name="_ProductBoxPartial" model="@p"></partial>
+                }
+            </div>
+        </div>
+    </section>
+    <!-- Related Section End -->
