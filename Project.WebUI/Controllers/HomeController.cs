@@ -12,10 +12,12 @@ namespace Project.WebUI.Controllers
     {
         SqlRepo<Slider> repoSlider;
         SqlRepo<Product> repoProduct;
-        public HomeController(SqlRepo<Slider> _repoSlider, SqlRepo<Product> _repoProduct)
+        SqlRepo<Blog> repoBlog;
+        public HomeController(SqlRepo<Slider> _repoSlider, SqlRepo<Product> _repoProduct, SqlRepo<Blog> _repoBlog)
         {
             repoSlider = _repoSlider;
             repoProduct = _repoProduct;
+            repoBlog = _repoBlog;
         }
         public IActionResult Index()
         {
@@ -23,7 +25,8 @@ namespace Project.WebUI.Controllers
             {
                 Slider = repoSlider.GetAll(),
                 LatestProducts = repoProduct.GetAll().Include(i => i.ProductPictures).OrderByDescending(o => o.ID).Take(8),
-                BestSellerProducts = repoProduct.GetAll().Include(i => i.ProductPictures).OrderBy(o => Guid.NewGuid()).Take(8)
+                BestSellerProducts = repoProduct.GetAll().Include(i => i.ProductPictures).OrderBy(o => Guid.NewGuid()).Take(8),
+                Blogs = repoBlog.GetAll().Include(i => i.BlogPictures).OrderByDescending(o => o.ID).Take(3)
             };
             return View(indexVM);
         }

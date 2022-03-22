@@ -8,6 +8,8 @@ namespace Project.WebUI.ViewModels
         public IEnumerable<Slider> Slider { get; set; }
         public IEnumerable<Product> LatestProducts { get; set; }
         public IEnumerable<Product> BestSellerProducts { get; set; }
+        public IEnumerable<Blog> Blogs { get; set; }
+
 
     }
 }
