@@ -10,15 +10,18 @@ namespace Project.WebUI.ViewComponents
     public class FooterViewComponent : ViewComponent
     {
         SqlRepo<Brand> repoBrand;
-        public FooterViewComponent(SqlRepo<Brand> _repoBrand)
+        SqlRepo<Category> repoCategory;
+        public FooterViewComponent(SqlRepo<Brand> _repoBrand, SqlRepo<Category> _repoCategory)
         {
             repoBrand = _repoBrand;
+            repoCategory = _repoCategory;
         }
         public IViewComponentResult Invoke()
         {
             FooterVM footerVM = new FooterVM
             {
                 Brands = repoBrand.GetAll(),
+                Categories = repoCategory.GetAll()
             };
             return View(footerVM);
         }
