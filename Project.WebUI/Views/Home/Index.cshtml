@@ -89,36 +89,36 @@
             </div>
             <div class="col-lg-4">
                 <div class="categories__hot__deal">
-                    <img src="/img/product-sale.png" alt="">
+                    @*<img src="@Model.DiscountedProduct.FirstOrDefault().Path" alt="">*@
                     <div class="hot__deal__sticker">
-                        <span>Sale Of</span>
-                        <h5>$29.99</h5>
+                        <span>İndirim</span>
+                        @*<h5>@Model.DiscountedProduct.Price ₺</h5>*@
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 offset-lg-1">
                 <div class="categories__deal__countdown">
-                    <span>Deal Of The Week</span>
-                    <h2>Multi-pocket Chest Bag Black</h2>
+                    <span>Haftanın Fırsatı</span>
+                    @*<h2>@Model.DiscountedProduct.Name</h2>*@
                     <div class="categories__deal__countdown__timer" id="countdown">
                         <div class="cd-item">
-                            <span>3</span>
-                            <p>Days</p>
+                            <span>7</span>
+                            <p>Gün</p>
                         </div>
                         <div class="cd-item">
                             <span>1</span>
-                            <p>Hours</p>
+                            <p>Saat</p>
                         </div>
                         <div class="cd-item">
                             <span>50</span>
-                            <p>Minutes</p>
+                            <p>Dakika</p>
                         </div>
                         <div class="cd-item">
                             <span>18</span>
-                            <p>Seconds</p>
+                            <p>Saniye</p>
                         </div>
                     </div>
-                    <a href="#" class="primary-btn">Shop now</a>
+                    <a href="#" class="primary-btn">Satın Al</a>
                 </div>
             </div>
         </div>
