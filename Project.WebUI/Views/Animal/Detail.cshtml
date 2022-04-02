@@ -1,0 +1,134 @@
+﻿@model AnimalVM
+    <!-- Shop Details Section Begin -->
+<section class="shop-details">
+    <div class="container">
+        <div class="product__details__pic">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="product__details__breadcrumb">
+                            <a href="/index.html">Ana Sayfa</a>
+                            @*<a href="/shop.html">@Model.Product.Brand.Name</a>*@
+                            <span>@Model.Animal.Name</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-3">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">
+                                    <div class="product__thumb__pic set-bg" data-setbg="@Model.Animal.AnimalPictures.FirstOrDefault().Path">
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6 col-md-9">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                                <div class="product__details__pic__item">
+                                    <img src=@Model.Animal.AnimalPictures.FirstOrDefault().Path alt="">
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tabs-2" role="tabpanel">
+                                <div class="product__details__pic__item">
+                                    <img src="/img/shop-details/product-big-3.png" alt="">
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tabs-3" role="tabpanel">
+                                <div class="product__details__pic__item">
+                                    <img src="/img/shop-details/product-big.png" alt="">
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tabs-4" role="tabpanel">
+                                <div class="product__details__pic__item">
+                                    <img src="/img/shop-details/product-big-4.png" alt="">
+                                    <a href="https://www.youtube.com/watch?v=8PJ3_p7VqHw&list=RD8PJ3_p7VqHw&start_radio=1" class="video-popup"><i class="fa fa-play"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="product__details__content">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-8">
+                    <div class="product__details__text">
+                        <h4>@Model.Animal.Name</h4>
+                        <div class="product__details__last__option">
+                            <h5><span>Satın Alma Sahiplen</span></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="product__details__tab">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#tabs-5"
+                                   role="tab">Hayvan Açıklaması</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-6" role="tab">
+                                    Sahiplendiren Bilgileri
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tabs-5" role="tabpanel">
+                                <div class="product__details__tab__content">
+                                    <p class="note">
+                                        @Model.Animal.Name
+                                    </p>
+                                    <div class="product__details__tab__content__item">
+                                        <h5>Hayvan Açıklaması</h5>
+                                        <p>@Model.Animal.Description</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tabs-6" role="tabpanel">
+                                <div class="product__details__tab__content">
+                                    <div class="product__details__tab__content__item">
+                                        <h5>İsim</h5>
+                                        <p>
+                                            @Model.Animal.Information
+                                        </p>
+                                    </div>
+                                    <div class="product__details__tab__content__item">
+                                        <h5>Telefon Numarası</h5>
+                                        <p>
+                                            @Model.Animal.Number
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Shop Details Section End -->
+<!-- Related Section Begin -->
+<section class="related spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="related-title">Benzer İlanlar</h3>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (Animal a in Model.SimilarAnimals)
+            {
+                <partial name="_AnimalBoxPartial" model="@a"></partial>
+            }
+        </div>
+    </div>
+</section>
+<!-- Related Section End -->

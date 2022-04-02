@@ -1,0 +1,31 @@
+﻿@model Product
+
+<div class="col-lg-4 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
+    <div class="product__item">
+        <div class="product__item__pic set-bg" data-setbg="@Model.ProductPictures.FirstOrDefault().Path">
+            <span class="label">Yeni</span>
+            @if (Model.Stock > 0)
+            {
+             <span class="label" style="color: #ffffff; background: #36a300">Yeni</span>}
+            else
+            {
+            <span class="label " style="color: #ffffff; background: #111111">Tükendi</span> }
+            <ul class="product__hover">
+                <li><a href="#"><img src="/img/icon/heart.png" alt=""><span>Favorilerine Ekle</span></a></li>
+                <li><a asp-controller="Product" asp-action="Detail" asp-route-name="@GeneralTool.ConvertURL(Model.Name)" asp-route-id="@Model.ID"><img src="/img/icon/search.png" alt=""><span>İncele</span></a></li>
+            </ul>
+        </div>
+        <div class="product__item__text">
+            <h6>@Model.Name</h6>
+            <a href="#" class="add-cart">Sepete Ekle</a>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+            </div>
+            <h5>@Model.Price ₺</h5>
+            </div>
+        </div>
+</div>

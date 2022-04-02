@@ -1,11 +1,12 @@
 ﻿@model IndexVM
     <!-- Hero Section Begin -->
 <section class="hero">
+    <div class="container">
         <div class="hero__slider owl-carousel">
             @foreach (Slider s in Model.Slider)
             {
                 <a href="#">
-                    <div class="hero__items set-bg" data-setbg="@s.Picture">
+                    <div class="hero__items set-bg" style="width:1140px; height: 377px; max-height: 377px; overflow: hidden;" data-setbg="@s.Picture">
                         <div class="container">
                             <div class="row">
                                 <div class="col-xl-5 col-lg-7 col-md-8">
@@ -16,10 +17,11 @@
                 </a>
             }
         </div>
+    </div>
 </section>
 <!-- Hero Section End -->
 <!-- Banner Section Begin -->
-<section class="banner spad">
+<!--<section class="banner spad">
     <div class="container">
         <div class="row">
             <div class="col-lg-7 offset-lg-4">
@@ -57,12 +59,12 @@
             </div>
         </div>
     </div>
-</section>
+</section>-->
 <!-- Banner Section End -->
 <!-- Product Section Begin -->
 <section class="product spad">
     <div class="container">
-        <div class="row">
+        <div class="row" style="margin-top: 50px;">
             <div class="col-lg-12">
                 <ul class="filter__controls">
                     <li class="active" data-filter="*">Yeni Ürünler</li>
@@ -83,9 +85,9 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3">
-                <div class="categories__text">
-                    <h2>Clothings Hot <br /> <span>Shoe Collection</span> <br /> Accessories</h2>
-                </div>
+                @*<div class="categories__text">
+                        <h2>Clothings Hot <br /> <span>Shoe Collection</span> <br /> Accessories</h2>
+                    </div>*@
             </div>
             <div class="col-lg-4">
                 <div class="categories__hot__deal">
@@ -100,24 +102,6 @@
                 <div class="categories__deal__countdown">
                     <span>Haftanın Fırsatı</span>
                     @*<h2>@Model.DiscountedProduct.Name</h2>*@
-                    <div class="categories__deal__countdown__timer" id="countdown">
-                        <div class="cd-item">
-                            <span>7</span>
-                            <p>Gün</p>
-                        </div>
-                        <div class="cd-item">
-                            <span>1</span>
-                            <p>Saat</p>
-                        </div>
-                        <div class="cd-item">
-                            <span>50</span>
-                            <p>Dakika</p>
-                        </div>
-                        <div class="cd-item">
-                            <span>18</span>
-                            <p>Saniye</p>
-                        </div>
-                    </div>
                     <a href="#" class="primary-btn">Satın Al</a>
                 </div>
             </div>

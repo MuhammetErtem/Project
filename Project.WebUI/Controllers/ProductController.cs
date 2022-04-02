@@ -17,24 +17,27 @@ namespace Project.WebUI.Controllers
         }
         public IActionResult Index()
         {
-
-            return View();
-        }
-
-        [Route("/urun/{name}-{id}")]
-        public IActionResult Detail(string name, int id)
-        {
-            Product product = repoProduct.GetAll().Include(i => i.ProductPictures).FirstOrDefault(x => x.ID == id) ?? null;
-            if (product != null)
+            ProductVM productVM = new ProductVM
             {
-                ProductVM productVM = new ProductVM
-                {
-                    Product = product,
-                    SimilarProducts = repoProduct.GetAll().Include(i => i.ProductPictures).Where(w => w.BrandID == product.BrandID && w.ID != product.ID).Take(4)
-                };
-                return View(productVM);
-            }
-            else return Redirect("/");
-        }
+                ListProduct = repoProduct.GetAll().Include(i => i.ProductPictures).OrderByDescending(o => o.ID).Take(16),
+        };
+            return View(productVM);
     }
+
+    [Route("/urun/{name}-{id}")]
+    public IActionResult Detail(string name, int id)
+    {
+        Product product = repoProduct.GetAll().Include(i => i.ProductPictures).FirstOrDefault(x => x.ID == id) ?? null;
+        if (product != null)
+        {
+            ProductVM productVM = new ProductVM
+            {
+                Product = product,
+                SimilarProducts = repoProduct.GetAll().Include(i => i.ProductPictures).Where(w => w.BrandID == product.BrandID && w.ID != product.ID).Take(4)
+            };
+            return View(productVM);
+        }
+        else return Redirect("/");
+    }
+}
 }

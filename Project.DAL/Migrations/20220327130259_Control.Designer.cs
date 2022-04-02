@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Project.DAL.DbContexts;
 
 namespace Project.DAL.Migrations
 {
     [DbContext(typeof(SqlContext))]
-    partial class SqlContextModelSnapshot : ModelSnapshot
+    [Migration("20220327130259_Control")]
+    partial class Control
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,18 +30,15 @@ namespace Project.DAL.Migrations
 
                     b.Property<string>("Description")
                         .HasMaxLength(150)
-                        .HasColumnType("text");
-
-                    b.Property<string>("Information")
                         .HasColumnType("varchar(150)");
+
+                    b.Property<string>("Detail")
+                        .HasColumnType("text");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
-
-                    b.Property<string>("Number")
-                        .HasColumnType("varchar(11)");
 
                     b.HasKey("ID");
 
