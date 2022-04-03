@@ -13,10 +13,12 @@ namespace Project.DAL.DbContexts
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Product>().HasOne(ho => ho.Brand).WithMany(wm => wm.Products).OnDelete(DeleteBehavior.SetNull);
+            modelBuilder.Entity<SubCategory>().HasOne(ho => ho.Category).WithMany(wm => wm.SubCategories).OnDelete(DeleteBehavior.SetNull);
 
         }
 
         public DbSet<Category> Category { get; set; }
+        public DbSet<SubCategory> SubCategory { get; set; }
         public DbSet<Brand> Brand { get; set; }
         public DbSet<Slider> Slider { get; set; }
         public DbSet<Blog> Blog { get; set; }

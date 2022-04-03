@@ -17,10 +17,14 @@ namespace Project.WebUI.Controllers
         }
         public IActionResult Index()
         {
+            BlogVM blogVM = new BlogVM
+            {
+                ListBlog = repoBlog.GetAll().Include(i => i.BlogPictures).OrderByDescending(o => o.ID).Take(16),
+            };
+            return View(blogVM);
 
-            return View();
         }
-
+    
         [Route("/blog/{name}-{id}")]
         public IActionResult Detail(string name, int id)
         {

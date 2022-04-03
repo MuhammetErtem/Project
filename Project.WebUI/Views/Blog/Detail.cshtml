@@ -8,7 +8,7 @@
                     <h2>@Model.Blog.Title</h2>
                     <ul>
                         <li>By Deercreative</li>
-                        <li>@Model.Blog.RecDate</li>
+                        <li>@Model.Blog.RecDate.ToShortDateString()</li>
                         <li>8 Yorum</li>
                     </ul>
                 </div>
@@ -37,11 +37,6 @@
                             <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
                         </ul>
                     </div>
-                    <div class="blog__details__text">
-                        <p>
-                            @Model.Blog.Detail
-                        </p>
-                    </div>
                     <div class="blog__details__quote">
                         <i class="fa fa-quote-left"></i>
                         <p>
@@ -49,8 +44,14 @@
                         </p>
                         <h6></h6>
                     </div>
-                    
-                    <div class="blog__details__option">
+
+                    <div class="blog__details__text">
+                        <p>
+                            @Model.Blog.Detail
+                        </p>
+                    </div>
+
+                    @*<div class="blog__details__option">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="blog__details__author">
@@ -106,7 +107,7 @@
                                 </div>
                             </div>
                         </form>
-                    </div>
+                    </div>*@
                 </div>
             </div>
         </div>

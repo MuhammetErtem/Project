@@ -4,7 +4,7 @@
     <div class="blog__item">
         <div class="blog__item__pic set-bg" data-setbg="@Model.BlogPictures.FirstOrDefault().Path"></div>
         <div class="blog__item__text">
-            <span><img src="/img/icon/calendar.png" alt="">@Model.RecDate</span>
+            <span><img src="/img/icon/calendar.png" alt="">@Model.RecDate.ToShortDateString()</span>
             <h5>@Model.Title</h5>
             <a asp-controller="Blog" asp-action="Detail" asp-route-name="@GeneralTool.ConvertURL(Model.Title)" asp-route-id="@Model.ID">Devamını Oku</a>
         </div>

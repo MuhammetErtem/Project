@@ -6,9 +6,11 @@ namespace Project.WebUI.ViewModels
 {
     public class BlogVM
     {
-        public IEnumerable<Blog> Blogs { get; set; }
         public Blog Blog { get; set; }
+        public IEnumerable<Blog> Blogs { get; set; }
         public BlogPicture BlogPicture { get; set; }
+        public IEnumerable<Blog> ListBlog { get; set; }
+
 
     }
 }

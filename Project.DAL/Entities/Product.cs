@@ -32,5 +32,9 @@ namespace Project.DAL.Entities
         public List<ProductPicture> ProductPictures { get; set; }
         public int? BrandID { get; set; }
         public Brand Brand { get; set; }
+
+        public int? SubCategoryID { get; set; }
+        public SubCategory SubCategory { get; set; }
+
     }
 }

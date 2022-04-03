@@ -12,8 +12,11 @@ namespace Project.DAL.Entities
     public class Category
     {
         public int ID { get; set; }
+
         [Column(TypeName ="varchar(30)"),Display(Name ="Kategori Adı"),StringLength(30),Required(ErrorMessage ="Kategori Boş Geçilemez...")]
         public string Name { get; set; }
+
+        public ICollection<SubCategory> SubCategories { get; set; }
 
     }
 }
