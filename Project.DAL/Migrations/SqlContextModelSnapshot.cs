@@ -19,6 +19,51 @@ namespace Project.DAL.Migrations
                 .HasAnnotation("ProductVersion", "5.0.15")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Project.DAL.Entities.Admin", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("LastDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastIPNo")
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<string>("MailAddress")
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("varchar(80)");
+
+                    b.Property<string>("NameSurname")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("varchar(30)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasMaxLength(32)
+                        .HasColumnType("char(32)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Admin");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            LastDate = new DateTime(2022, 4, 3, 18, 15, 5, 586, DateTimeKind.Local).AddTicks(3560),
+                            LastIPNo = "1",
+                            MailAddress = "Muhammet@gmail.com",
+                            NameSurname = "Muhammet Ertem",
+                            Password = "202cb962ac59075b964b07152d234b70"
+                        });
+                });
+
             modelBuilder.Entity("Project.DAL.Entities.Animal", b =>
                 {
                     b.Property<int>("ID")

@@ -14,6 +14,7 @@ namespace Project.DAL.DbContexts
         {
             modelBuilder.Entity<Product>().HasOne(ho => ho.Brand).WithMany(wm => wm.Products).OnDelete(DeleteBehavior.SetNull);
             modelBuilder.Entity<SubCategory>().HasOne(ho => ho.Category).WithMany(wm => wm.SubCategories).OnDelete(DeleteBehavior.SetNull);
+            modelBuilder.Entity<Admin>().HasData(new Admin { ID = 1, NameSurname = "Muhammet Ertem", MailAddress = "Muhammet@gmail.com", Password = "202cb962ac59075b964b07152d234b70", LastDate = DateTime.Now, LastIPNo = "1" });
 
         }
 
@@ -28,6 +29,8 @@ namespace Project.DAL.DbContexts
         public DbSet<Animal> Animal { get; set; }
         public DbSet<AnimalPicture> AnimalPicture { get; set; }
         public DbSet<Contact> Contact { get; set; }
+        public DbSet<Admin> Admin { get; set; }
+
 
 
     }

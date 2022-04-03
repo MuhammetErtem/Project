@@ -1,0 +1,53 @@
+﻿ @model IEnumerable<Slider>
+ @{
+    int i = 0;
+}
+<div class="right_col" role="main">
+    <div class="">
+        <div class="row" style="display: block;">
+            <div class="col-md-12 col-sm-12  ">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Slayt Yönetimi <span style="color:red">@TempData["hata"]</span></h2>
+                        <a asp-action="Create" class="btn btn-round btn-primary float-right" style="color:#fff">Yeni Slayt</a>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="x_content">
+                        <div class="table-responsive" style="position:relative">
+                            <img class="kResim" style="width:100px;position:absolute;left:150px;top:100px"/>
+                            <table class="table table-striped jambo_table bulk_action">
+                                <thead>
+                                    <tr class="headings">
+                                        <th class="column-title">Slogan</th>
+                                        <th class="column-title">Başlık</th>
+                                        <th class="column-title">Fiyat</th>
+                                        <th class="column-title">Görüntülenme Sırası</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach (Slider b in Model)
+                                    {
+                                        <tr class="@(i%2==0?"even":"odd") pointer">
+                                            <td style="vertical-align:middle"><a asp-action="Update" asp-route-id="@b.ID" onmouseout="$('.kResim').hide()" onmouseenter="$('.kResim').show();$('.kResim').attr('src','@b.Picture')">@b.Slogan</a></td>
+                                            <td style="vertical-align:middle"><a asp-action="Update" asp-route-id="@b.ID">@b.Title</a></td>
+                                            <td style="vertical-align:middle"><a asp-action="Update" asp-route-id="@b.ID">@b.Price TL</a></td>
+                                            <td style="vertical-align:middle"><a asp-action="Update" asp-route-id="@b.ID">@b.DisplayIndex</a></td>
+                                            <th><button onclick="deleteRecord('@b.Slogan','slider',@b.ID)" class="btn btn-round btn-danger float-right">Sil</button></th>
+                                        </tr>
+                                        i++;
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /page content -->

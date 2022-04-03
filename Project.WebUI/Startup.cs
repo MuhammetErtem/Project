@@ -50,8 +50,11 @@ namespace Project.WebUI
                 //Durum Kodu Sayfalarýný Kullan
             }
             app.UseStaticFiles();
-
             app.UseRouting(); //Kendi özel yönlendirmemizdir.
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+            
 
             app.UseEndpoints(endpoints =>
             {
