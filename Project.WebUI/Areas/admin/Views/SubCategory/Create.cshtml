@@ -1,4 +1,4 @@
-﻿@model SubCategory
+﻿@model SubCategoryVM
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="page-header">
@@ -17,20 +17,18 @@
                         <h4 class="card-title"><a asp-action="Cancel" class="btn btn-round btn-danger float-right" style="color:#fff">İptal</a></h4>
                         <p class="card-description">
                         </p>
-                        <div class="form-row">
-                            <div class="form-group col-12 col-md-6">
-                                <label asp-for="CategoryID"></label>
-                                <select class="custom-select" asp-for="CategoryID" asp-items="ViewBag.Categories as SelectList">
-                                    <option selected disabled>[Seçiniz]</option>
-                                </select>
-                                <span asp-validation-for="CategoryID"></span>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.SubCategory.CategoryID">
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <select asp-for="@Model.SubCategory.CategoryID" class="form-control" asp-items="@Model.Categories.Select(s=>new SelectListItem{Value=s.ID.ToString(),Text=@s.Name})"></select>
                             </div>
                         </div>
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Name">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.SubCategory.Name">
                             </label>
                             <div class="col-md-6 col-sm-6 ">
-                                <input asp-for="@Model.Name" class="form-control "><span style="color:red" asp-validation-for="@Model.Name"></span>
+                                <input asp-for="@Model.SubCategory.Name" class="form-control "><span style="color:red" asp-validation-for="@Model.SubCategory.Name"></span>
                             </div>
                         </div>
                         <br />
@@ -47,6 +45,14 @@
             </div>
         </div>
     </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Bu site MuhammetErtem® Tarafından Gelişmiş E-Ticaret sistemleri ile hazırlanmıştır.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"><a href="https://www.muhammetertem.com.tr/" target="_blank"></a></span>
+        </div>
+    </footer>
+    <!-- Footer -->
 </div>
 
 <!-- /page content -->

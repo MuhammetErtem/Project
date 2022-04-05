@@ -32,13 +32,13 @@
                                 <tbody>
                                     @foreach (SubCategory s in Model)
                                     {
-                                    <tr class="@(i%2==0?"even":"odd") pointer">
-                                        <td class="py-1" style="vertical-align:middle"><a>@s.Name</a></td>
-                                        <td class="py-1" style="vertical-align:middle"><a>@*@s.Category.Name*@</a></td>
+                                        <tr class="@(i%2==0?"even":"odd") pointer">
+                                            <td class="py-1" style="vertical-align:middle"><a>@s.Name</a></td>
+                                            <td class="py-1" style="vertical-align:middle"><a>@s.Category.Name</a></td>
 
-                                        <th><a asp-action="Update" asp-route-id="@s.ID" class="btn btn-round btn-success float-right">Düzenle</a></th>
-                                        <th><button onclick="deleteRecord('@s.Name','category',@s.ID)" class="btn btn-round btn-danger float-right">Sil</button></th>
-                                    </tr>
+                                            <th><a asp-action="Update" asp-route-id="@s.ID" class="btn btn-round btn-success float-right">Düzenle</a></th>
+                                            <th><button onclick="deleteRecord('@s.Name','subcategory',@s.ID)" class="btn btn-round btn-danger float-right">Sil</button></th>
+                                        </tr>
                                         i++;
                                     }
                                 </tbody>
@@ -49,4 +49,13 @@
             </div>
         </div>
     </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Bu site MuhammetErtem® Tarafından Gelişmiş E-Ticaret sistemleri ile hazırlanmıştır.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"><a href="https://www.muhammetertem.com.tr/" target="_blank"></a></span>
+        </div>
+    </footer>
+    <!-- Footer -->
 </div>
+

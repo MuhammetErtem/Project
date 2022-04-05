@@ -1,49 +1,64 @@
-﻿ @model IEnumerable<Product>
- @{
+﻿@model IEnumerable<Product>
+@{
     int i = 0;
 }
-<div class="right_col" role="main">
-    <div class="">
-        <div class="row" style="display: block;">
-            <div class="col-md-12 col-sm-12  ">
-                <div class="x_panel">
-                    <div class="x_title">
-                        <h2>Ürün Yönetimi <span style="color:red">@TempData["hata"]</span></h2>
-                        <a asp-action="Create" class="btn btn-round btn-primary float-right" style="color:#fff">Yeni Ürün</a>
-                        <div class="clearfix"></div>
-                    </div>
 
-                    <div class="x_content">
-                        <div class="table-responsive" style="position:relative">
-                            <img class="kResim" style="width:100px;position:absolute;left:150px;top:100px"/>
-                            <table class="table table-striped jambo_table bulk_action">
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title"> Ürün Yönetimi </h3>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#"> Liste </a></li>
+                    <li class="breadcrumb-item active" aria-current="page"> Ürün Yönetimi </li>
+                </ol>
+            </nav>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title"><a asp-action="Create" class="btn btn-round btn-primary float-right" style="color:#fff">Yeni Ürün</a></h4>
+                        <p class="card-description">
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
                                 <thead>
-                                    <tr class="headings">
-                                        <th class="column-title">Ürün Adı</th>
-                                        <th class="column-title">Fiyat</th>
-                                        <th></th>
+                                    <tr>
+                                        <th> Ürün Adı </th>
+                                        <th> Ürün Markası </th>
+                                        <th> Stok Miktarı </th>
+                                        <th> Fiyatı </th>
                                     </tr>
                                 </thead>
-
                                 <tbody>
-                                    @foreach (Product b in Model)
+                                    @foreach (Product p in Model)
                                     {
                                         <tr class="@(i%2==0?"even":"odd") pointer">
-                                            <td style="vertical-align:middle"><a asp-action="Update" asp-route-id="@b.ID">@b.Name</a></td>
-                                            <td style="vertical-align:middle"><a asp-action="Update" asp-route-id="@b.ID">@b.Price @*@b.Currency*@</a></td>
-                                            <th><button onclick="deleteRecord('@b.Name','product',@b.ID)" class="btn btn-round btn-danger float-right">Sil</button></th>
+
+                                            <td class="py-1" style="vertical-align:middle"><a>@p.Name</a></td>
+                                            <td class="py-1" style="vertical-align:middle"><a>@p.Brand.Name</a></td>
+                                            <td class="py-1" style="vertical-align:middle"><a>@p.Stock</a></td>
+                                            <td class="py-1" style="vertical-align:middle"><a>@p.Price</a></td>
+                                            <th><a asp-action="Update" asp-route-id="@p.ID" class="btn btn-round btn-success float-right">Düzenle</a></th>
+                                            <th><button onclick="deleteRecord('@p.Name','product',@p.ID)" class="btn btn-round btn-danger float-right">Sil</button></th>
                                         </tr>
                                         i++;
                                     }
                                 </tbody>
                             </table>
                         </div>
-
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Bu site MuhammetErtem® Tarafından Gelişmiş E-Ticaret sistemleri ile hazırlanmıştır.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"><a href="https://www.muhammetertem.com.tr/" target="_blank"></a></span>
+        </div>
+    </footer>
+    <!-- Footer -->
 </div>
-<!-- /page content -->

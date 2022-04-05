@@ -30,7 +30,12 @@ namespace Project.DAL.Entities
         public int Stock { get; set; }
 
         public List<ProductPicture> ProductPictures { get; set; }
+
+        [Display(Name = "Marka")]
+
         public int? BrandID { get; set; }
+        [Display(Name = "Marka")]
+
         public Brand Brand { get; set; }
 
         public int? SubCategoryID { get; set; }

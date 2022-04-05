@@ -31,11 +31,11 @@
                                 <tbody>
                                     @foreach (Category c in Model)
                                     {
-                                    <tr class="@(i%2==0?"even":"odd") pointer">
-                                        <td class="py-1" style="vertical-align:middle"><a>@c.Name</a></td>
-                                        <th><a asp-action="Update" asp-route-id="@c.ID" class="btn btn-round btn-success float-right">Düzenle</a></th>
-                                        <th><button onclick="deleteRecord('@c.Name','category',@c.ID)" class="btn btn-round btn-danger float-right">Sil</button></th>
-                                    </tr>
+                                        <tr class="@(i%2==0?"even":"odd") pointer">
+                                            <td class="py-1" style="vertical-align:middle"><a>@c.Name</a></td>
+                                            <th><a asp-action="Update" asp-route-id="@c.ID" class="btn btn-round btn-success float-right">Düzenle</a></th>
+                                            <th><button onclick="deleteRecord('@c.Name','category',@c.ID)" class="btn btn-round btn-danger float-right">Sil</button></th>
+                                        </tr>
                                         i++;
                                     }
                                 </tbody>
@@ -46,4 +46,12 @@
             </div>
         </div>
     </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Bu site MuhammetErtem® Tarafından Gelişmiş E-Ticaret sistemleri ile hazırlanmıştır.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"><a href="https://www.muhammetertem.com.tr/" target="_blank"></a></span>
+        </div>
+    </footer>
+    <!-- Footer -->
 </div>

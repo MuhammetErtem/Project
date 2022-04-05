@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.IO;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace Project.WebUI.Areas.admin.Controllers
 {
@@ -21,7 +22,7 @@ namespace Project.WebUI.Areas.admin.Controllers
 
         public IActionResult Index()
         {
-            return View(repoProduct.GetAll().OrderByDescending(o=>o.ID));
+            return View(repoProduct.GetAll().Include(p => p.Brand).ToList().OrderByDescending(o=>o.ID));
         }
 
         public IActionResult Create()
@@ -59,10 +60,7 @@ namespace Project.WebUI.Areas.admin.Controllers
         [HttpPost]
         public IActionResult Update(ProductVM model)
         {
-            if (ModelState.IsValid)
-            {
-                repoProduct.Update(model.Product);
-            }
+            if (ModelState.IsValid) repoProduct.Update(model.Product);
             return RedirectToAction("Index");
         }
 
