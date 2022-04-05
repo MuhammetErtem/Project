@@ -1,41 +1,43 @@
-﻿	@model Category
-<div class="right_col" role="main">
-    <div class="">
-        <div class="clearfix"></div>
+﻿@model Category
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title"> Kategori Güncelleme </h3>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#"> Güncelle </a></li>
+                    <li class="breadcrumb-item active" aria-current="page"> Kategori Yönetimi </li>
+                </ol>
+            </nav>
+        </div>
         <div class="row">
-            <div class="col-md-12 col-sm-12 ">
-                <div class="x_panel">
-                    <div class="x_title">
-                        <h2> Kategori Güncelle</h2>
-
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="x_content">
-                        <br />
-                        <form asp-action="Update" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
-                             <input asp-for="@Model.ID" type="hidden">
-                            <div class="item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Name">
-                                </label>
-                                <div class="col-md-6 col-sm-6 ">
-                                    <input asp-for="@Model.Name" class="form-control "><span style="color:red" asp-validation-for="@Model.Name"></span>
-                                </div>
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title"><a asp-action="Cancel" class="btn btn-round btn-danger float-right" style="color:#fff">İptal</a></h4>
+                        <p class="card-description">
+                        </p>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Name">
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input asp-for="@Model.Name" class="form-control "><span style="color:red" asp-validation-for="@Model.Name"></span>
                             </div>
-
+                        </div>
+                        <br />
+                        <form enctype="multipart/form-data" asp-action="Create" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
                             <div class="item form-group">
                                 <div class="col-md-6 col-sm-6 offset-md-3">
-                                    <a class="btn btn-primary" asp-action="Cancel">İptal</a>
                                     <button class="btn btn-primary" type="reset">Temizle</button>
                                     <button type="submit" class="btn btn-success">Güncelle</button>
                                 </div>
                             </div>
-
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
+
 <!-- /page content -->

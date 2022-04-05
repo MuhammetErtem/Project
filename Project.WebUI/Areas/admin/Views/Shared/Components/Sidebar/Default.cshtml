@@ -1,0 +1,98 @@
+﻿<nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+        <a class="sidebar-brand brand-logo" href="index.html"><img src="/css/admincss/assets/images/P.jpg" alt="logo" /></a>
+        <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="/css/admincss/assets/images/P3.jpg" alt="logo" /></a>
+    </div>
+    <ul class="nav">
+        <li class="nav-item profile">
+            <div class="profile-desc">
+                <div class="profile-pic">
+                    <div class="count-indicator">
+                        <img class="img-xs rounded-circle " src="/css/admincss/assets/images/faces/face15.jpg" alt="">
+                        <span class="count bg-success"></span>
+                    </div>
+                    <div class="profile-name">
+                        <h5 class="mb-0 font-weight-normal">@User.Claims.First(f => f.Type == ClaimTypes.Name).Value</h5>
+                        <span>Admin</span>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="nav-item nav-category">
+            <span class="nav-link">Menü</span>
+        </li>
+        <li class="nav-item menu-items">
+            <a class="nav-link" asp-controller="Home" asp-action="Index">
+                <span class="menu-icon">
+                    <i class="mdi mdi-speedometer"></i>
+                </span>
+                <span class="menu-title">Ana Sayfa</span>
+            </a>
+        </li>
+        <li class="nav-item menu-items">
+            <a class="nav-link" asp-controller="Category" asp-action="Index">
+                <span class="menu-icon">
+                    <i class="mdi mdi-speedometer"></i>
+                </span>
+                <span class="menu-title">Kategoriler</span>
+            </a>
+        </li>
+        <li class="nav-item menu-items">
+            <a class="nav-link" asp-controller="SubCategory" asp-action="Index">
+                <span class="menu-icon">
+                    <i class="mdi mdi-speedometer"></i>
+                </span>
+                <span class="menu-title">Alt Kategoriler</span>
+            </a>
+        </li>
+        <li class="nav-item menu-items">
+            <a class="nav-link" asp-controller="Slider" asp-action="Index">
+                <span class="menu-icon">
+                    <i class="mdi mdi-speedometer"></i>
+                </span>
+                <span class="menu-title">Slayt Yönetimi</span>
+            </a>
+        </li>
+        <li class="nav-item menu-items">
+            <a class="nav-link" asp-controller="Brand" asp-action="Index">
+                <span class="menu-icon">
+                    <i class="mdi mdi-speedometer"></i>
+                </span>
+                <span class="menu-title">Marka Yönetimi</span>
+            </a>
+        </li>
+        <li class="nav-item menu-items">
+            <a class="nav-link" asp-controller="Product" asp-action="Index">
+                <span class="menu-icon">
+                    <i class="mdi mdi-speedometer"></i>
+                </span>
+                <span class="menu-title">Ürün Yönetimi</span>
+            </a>
+        </li>
+        <li class="nav-item menu-items">
+            <a class="nav-link" asp-controller="Blog" asp-action="Index">
+                <span class="menu-icon">
+                    <i class="mdi mdi-speedometer"></i>
+                </span>
+                <span class="menu-title">Blog Yönetimi</span>
+            </a>
+        </li>
+        <li class="nav-item menu-items">
+            <a class="nav-link" asp-controller="Animal" asp-action="Index">
+                <span class="menu-icon">
+                    <i class="mdi mdi-speedometer"></i>
+                </span>
+                <span class="menu-title">Sahiplendir</span>
+            </a>
+        </li>
+        <li class="nav-item menu-items">
+            <a class="nav-link" asp-controller="Contact" asp-action="Index">
+                <span class="menu-icon">
+                    <i class="mdi mdi-speedometer"></i>
+                </span>
+                <span class="menu-title">Mesajlar</span>
+            </a>
+        </li>
+
+    </ul>
+</nav>

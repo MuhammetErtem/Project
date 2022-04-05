@@ -1,46 +1,49 @@
-﻿ @model IEnumerable<Brand>
- @{
+﻿@model IEnumerable<Brand>
+@{
     int i = 0;
 }
-<div class="right_col" role="main">
-    <div class="">
-        <div class="row" style="display: block;">
-            <div class="col-md-12 col-sm-12  ">
-                <div class="x_panel">
-                    <div class="x_title">
-                        <h2>Marka Yönetimi <span style="color:red">@TempData["hata"]</span></h2>
-                        <a asp-action="Create" class="btn btn-round btn-primary float-right" style="color:#fff">Yeni Marka</a>
-                        <div class="clearfix"></div>
-                    </div>
 
-                    <div class="x_content">
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title"> Marka Yönetimi </h3>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#"> Liste </a></li>
+                    <li class="breadcrumb-item active" aria-current="page"> Marka Yönetimi </li>
+                </ol>
+            </nav>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title"><a asp-action="Create" class="btn btn-round btn-primary float-right" style="color:#fff">Yeni Marka</a></h4>
+                        <p class="card-description">
+                        </p>
                         <div class="table-responsive">
-                            <table class="table table-striped jambo_table bulk_action">
+                            <table class="table table-striped">
                                 <thead>
-                                    <tr class="headings">
-                                        <th class="column-title">Marka Adı</th>
-                                        <th></th>
+                                    <tr>
+                                        <th> Marka Adı</th>
                                     </tr>
                                 </thead>
-
                                 <tbody>
                                     @foreach (Brand b in Model)
                                     {
-                                        <tr class="@(i%2==0?"even":"odd") pointer">
-                                            <td style="vertical-align:middle"><a asp-action="Update" asp-route-id="@b.ID">@b.Name</a></td>
-                                            <th><button onclick="deleteRecord('@b.Name','brand',@b.ID)" class="btn btn-round btn-danger float-right">Sil</button></th>
-                                        </tr>
+                                    <tr class="@(i%2==0?"even":"odd") pointer">
+                                        <td class="py-1" style="vertical-align:middle"><a>@b.Name</a></td>
+                                        <th><a asp-action="Update" asp-route-id="@b.ID" class="btn btn-round btn-success float-right">Düzenle</a></th>
+                                        <th><button onclick="deleteRecord('@b.Name','category',@b.ID)" class="btn btn-round btn-danger float-right">Sil</button></th>
+                                    </tr>
                                         i++;
                                     }
                                 </tbody>
                             </table>
                         </div>
-
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- /page content -->
