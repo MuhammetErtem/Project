@@ -6,7 +6,7 @@
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="page-header">
-            <h3 class="page-title"> Ürün Yönetimi </h3>
+            <h2>Ürün Yönetimi <span style="color:red">@TempData["hata"]</span></h2>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#"> Liste </a></li>
@@ -27,6 +27,7 @@
                                     <tr>
                                         <th> Ürün Adı </th>
                                         <th> Ürün Markası </th>
+                                        <th> Ürün Alt Kategorisi </th>
                                         <th> Stok Miktarı </th>
                                         <th> Fiyatı </th>
                                     </tr>
@@ -34,15 +35,16 @@
                                 <tbody>
                                     @foreach (Product p in Model)
                                     {
-                                        <tr class="@(i%2==0?"even":"odd") pointer">
+                                    <tr class="@(i%2==0?"even":"odd") pointer">
 
-                                            <td class="py-1" style="vertical-align:middle"><a>@p.Name</a></td>
-                                            <td class="py-1" style="vertical-align:middle"><a>@p.Brand.Name</a></td>
-                                            <td class="py-1" style="vertical-align:middle"><a>@p.Stock</a></td>
-                                            <td class="py-1" style="vertical-align:middle"><a>@p.Price</a></td>
-                                            <th><a asp-action="Update" asp-route-id="@p.ID" class="btn btn-round btn-success float-right">Düzenle</a></th>
-                                            <th><button onclick="deleteRecord('@p.Name','product',@p.ID)" class="btn btn-round btn-danger float-right">Sil</button></th>
-                                        </tr>
+                                        <td class="py-1" style="vertical-align:middle"><a>@p.Name</a></td>
+                                        <td class="py-1" style="vertical-align:middle"><a>@p.Brand.Name</a></td>
+                                        <td class="py-1" style="vertical-align:middle"><a>@p.SubCategory.Name</a></td>
+                                        <td class="py-1" style="vertical-align:middle"><a>@p.Stock</a></td>
+                                        <td class="py-1" style="vertical-align:middle"><a>@p.Price</a></td>
+                                        <th><a asp-action="Update" asp-route-id="@p.ID" class="btn btn-round btn-success float-right">Düzenle</a></th>
+                                        <th><button onclick="deleteRecord('@p.Name','product',@p.ID)" class="btn btn-round btn-danger float-right">Sil</button></th>
+                                    </tr>
                                         i++;
                                     }
                                 </tbody>

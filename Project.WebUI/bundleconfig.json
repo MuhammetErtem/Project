@@ -1,0 +1,23 @@
+[
+  {
+    "inputFiles": [
+      "wwwroot/css/bootstrap.min.css",
+      "wwwroot/css/font-awesome.min.css",
+      "wwwroot/css/elegant-icons.css",
+      "wwwroot/css/magnific-popup.css",
+      "wwwroot/css/nice-select.css",
+      "wwwroot/css/owl.carousel.min.css",
+      "wwwroot/css/slicknav.min.css",
+      "wwwroot/css/style.css"
+    ],
+
+
+    "outputFileName": "wwwroot/css/main.css"
+  },
+  {
+    "inputFiles": [
+      "wwwroot/js/site.js"
+    ],
+    "outputFileName": "wwwroot/js/main.js"
+  }
+]

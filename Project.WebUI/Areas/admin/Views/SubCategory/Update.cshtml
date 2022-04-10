@@ -14,25 +14,25 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title"><a asp-action="Cancel" class="btn btn-round btn-danger float-right" style="color:#fff">İptal</a></h4>
-                        <p class="card-description">
-                        </p>
-                        <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.SubCategory.CategoryID">
-                            </label>
-                            <div class="col-md-6 col-sm-6 ">
-                                <select asp-for="@Model.SubCategory.CategoryID" class="form-control" asp-items="@Model.Categories.Select(s=>new SelectListItem{Value=s.ID.ToString(),Text=@s.Name})"></select>
+                        <form enctype="multipart/form-data" asp-action="Update" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                            <h4 class="card-title"><a asp-action="Cancel" class="btn btn-round btn-danger float-right" style="color:#fff">İptal</a></h4>
+                            <p class="card-description">
+                            </p>
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.SubCategory.CategoryID">
+                                </label>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <select asp-for="@Model.SubCategory.CategoryID" class="form-control" asp-items="@Model.Categories.Select(s=>new SelectListItem{Value=s.ID.ToString(),Text=@s.Name})"></select>
+                                </div>
                             </div>
-                        </div>
-                        <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.SubCategory.Name">
-                            </label>
-                            <div class="col-md-6 col-sm-6 ">
-                                <input asp-for="@Model.SubCategory.Name" class="form-control "><span style="color:red" asp-validation-for="@Model.SubCategory.Name"></span>
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.SubCategory.Name">
+                                </label>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <input asp-for="@Model.SubCategory.Name" class="form-control "><span style="color:red" asp-validation-for="@Model.SubCategory.Name"></span>
+                                </div>
                             </div>
-                        </div>
-                        <br />
-                        <form enctype="multipart/form-data" asp-action="Create" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                            <br />
                             <div class="item form-group">
                                 <div class="col-md-6 col-sm-6 offset-md-3">
                                     <button class="btn btn-primary" type="reset">Temizle</button>

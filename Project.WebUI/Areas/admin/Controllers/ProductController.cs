@@ -14,9 +14,11 @@ namespace Project.WebUI.Areas.admin.Controllers
     {
         SqlRepo<Product> repoProduct;
         SqlRepo<Brand> repoBrand;
-        public ProductController(SqlRepo<Product> _repoProduct, SqlRepo<Brand> _repoBrand)
+        SqlRepo<SubCategory> repoSubCategory;
+        public ProductController(SqlRepo<Product> _repoProduct, SqlRepo<Brand> _repoBrand, SqlRepo<SubCategory> _repoSubCategory)
         {
             repoProduct = _repoProduct;
+            repoSubCategory = _repoSubCategory;
             repoBrand = _repoBrand;
         }
 
@@ -30,7 +32,8 @@ namespace Project.WebUI.Areas.admin.Controllers
             ProductVM productVM = new ProductVM
             {
                 Product = new Product(),
-                Brands = repoBrand.GetAll()
+                Brands = repoBrand.GetAll(),
+                SubCategories = repoSubCategory.GetAll()
             };
             return View(productVM);
         }

@@ -14,61 +14,73 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title"><a asp-action="Cancel" class="btn btn-round btn-danger float-right" style="color:#fff">İptal</a></h4>
-                        <p class="card-description">
-                        </p>
-                        <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Product.Name">
-                            </label>
-                            <div class="col-md-6 col-sm-6 ">
-                                <input asp-for="@Model.Product.Name" class="form-control "><span style="color:red" asp-validation-for="@Model.Product.Name"></span>
-                            </div>
-                        </div>
-
-                        <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Product.Description">
-                            </label>
-                            <div class="col-md-6 col-sm-6 ">
-                                <input asp-for="@Model.Product.Description" class="form-control ">
-                            </div>
-                        </div>
-                        <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Product.Detail">
-                            </label>
-                            <div class="col-md-6 col-sm-6 ">
-                                <textarea asp-for="@Model.Product.Detail" class="editor" rows="10" cols="80"></textarea>
-                            </div>
-                        </div>
-                        <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Product.Price">
-                            </label>
-                            <div class="col-md-6 col-sm-6 ">
-                                <input asp-for="@Model.Product.Price" class="form-control ">
-                            </div>
-                        </div>
-                        <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Product.DiscountPrice">
-                            </label>
-                            <div class="col-md-6 col-sm-6 ">
-                                <input asp-for="@Model.Product.DiscountPrice" class="form-control ">
-                            </div>
-                        </div>
-                        <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Product.Stock">
-                            </label>
-                            <div class="col-md-6 col-sm-6 ">
-                                <input asp-for="@Model.Product.Stock" class="form-control ">
-                            </div>
-                        </div>
-                        <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Product.BrandID">
-                            </label>
-                            <div class="col-md-6 col-sm-6 ">
-                                <select asp-for="@Model.Product.BrandID" class="form-control" asp-items="@Model.Brands.Select(s=>new SelectListItem{Value=s.ID.ToString(),Text=@s.Name})"></select>
-                            </div>
-                        </div>
-                        <br />
                         <form enctype="multipart/form-data" asp-action="Create" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+
+                            <h4 class="card-title"><a asp-action="Cancel" class="btn btn-round btn-danger float-right" style="color:#fff">İptal</a></h4>
+                            <p class="card-description">
+                            </p>
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Product.Name">
+                                </label>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <input asp-for="@Model.Product.Name" class="form-control "><span style="color:red" asp-validation-for="@Model.Product.Name"></span>
+                                </div>
+                            </div>
+                            <label asp-for="@Model.ProductPicture.Path"></label>
+                            <div class="item form-group custom-file">
+                                <input type="file" class="custom-file-input" accept="image/*" id="ImageFile" name="ImageFile">
+                                <label class="custom-file-label" for="ImageFile" data-browse="Gözat">Görsel dosyası seçiniz</label>
+                            </div>
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Product.Description">
+                                </label>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <input asp-for="@Model.Product.Description" class="form-control ">
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Product.Detail">
+                                </label>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <textarea asp-for="@Model.Product.Detail" class="editor" rows="10" cols="80"></textarea>
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Product.Price">
+                                </label>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <input asp-for="@Model.Product.Price" class="form-control ">
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Product.DiscountPrice">
+                                </label>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <input asp-for="@Model.Product.DiscountPrice" class="form-control ">
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Product.Stock">
+                                </label>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <input asp-for="@Model.Product.Stock" class="form-control ">
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Product.BrandID">
+                                </label>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <select asp-for="@Model.Product.BrandID" class="form-control" asp-items="@Model.Brands.Select(s=>new SelectListItem{Value=s.ID.ToString(),Text=@s.Name})"></select>
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Product.SubCategoryID">
+                                </label>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <select asp-for="@Model.Product.SubCategoryID" class="form-control" asp-items="@Model.SubCategories.Select(s=>new SelectListItem{Value=s.ID.ToString(),Text=@s.Name})"></select>
+                                </div>
+                            </div>
+                            <br />
                             <div class="item form-group">
                                 <div class="col-md-6 col-sm-6 offset-md-3">
                                     <button class="btn btn-primary" type="reset">Temizle</button>
