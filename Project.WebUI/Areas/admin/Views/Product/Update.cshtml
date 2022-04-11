@@ -25,7 +25,13 @@
                                     <input asp-for="@Model.Product.Name" class="form-control "><span style="color:red" asp-validation-for="@Model.Product.Name"></span>
                                 </div>
                             </div>
-
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.ProductPicture.Path">
+                                </label>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <input asp-for="@Model.ProductPicture.Path" type="file" accept="image/*" class="form-control ">
+                                </div>
+                            </div>
                             <div class="item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Product.Description">
                                 </label>
@@ -68,6 +74,13 @@
                                     <select asp-for="@Model.Product.BrandID" class="form-control" asp-items="@Model.Brands.Select(s=>new SelectListItem{Value=s.ID.ToString(),Text=@s.Name})"></select>
                                 </div>
                             </div>
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Product.SubCategoryID">
+                                </label>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <select asp-for="@Model.Product.SubCategoryID" class="form-control" asp-items="@Model.SubCategories.Select(s=>new SelectListItem{Value=s.ID.ToString(),Text=@s.Name})"></select>
+                                </div>
+                            </div>
                             <br />
                             <div class="item form-group">
                                 <div class="col-md-6 col-sm-6 offset-md-3">
@@ -90,10 +103,8 @@
     </footer>
     <!-- Footer -->
 </div>
-
 @section customScript{
     <script src="/ckeditor/ckeditor.js"></script>
-    <script src="/cdn.ckeditor.com/4.18.0/full/ckeditor.js"></script>
     <script>
         CKEDITOR.replace($(".editor").attr("id"));
     </script>

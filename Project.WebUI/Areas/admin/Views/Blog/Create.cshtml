@@ -1,4 +1,4 @@
-﻿@model Blog
+﻿@model BlogVM
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="page-header">
@@ -19,32 +19,38 @@
                             <p class="card-description">
                             </p>
                             <div class="item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Title">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Blog.Title">
                                 </label>
                                 <div class="col-md-6 col-sm-6 ">
-                                    <input asp-for="@Model.Title" class="form-control "><span style="color:red" asp-validation-for="@Model.Title"></span>
-                                </div>
-                            </div>
-
-                            <div class="item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Description">
-                                </label>
-                                <div class="col-md-6 col-sm-6 ">
-                                    <input asp-for="@Model.Description" class="form-control ">
+                                    <input asp-for="@Model.Blog.Title" class="form-control "><span style="color:red" asp-validation-for="@Model.Blog.Title"></span>
                                 </div>
                             </div>
                             <div class="item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Detail">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.BlogPicture.Path">
                                 </label>
                                 <div class="col-md-6 col-sm-6 ">
-                                    <textarea asp-for="@Model.Detail" class="editor" rows="10" cols="80"></textarea>
+                                    <input asp-for="@Model.BlogPicture.Path" type="file" accept="image/*" class="form-control ">
                                 </div>
                             </div>
                             <div class="item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.RecDate">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Blog.Description">
                                 </label>
                                 <div class="col-md-6 col-sm-6 ">
-                                    <textarea asp-for="@Model.RecDate" class="editor" rows="10" cols="80"></textarea>
+                                    <input asp-for="@Model.Blog.Description" class="form-control ">
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Blog.Detail">
+                                </label>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <textarea asp-for="@Model.Blog.Detail" class="editor" rows="10" cols="80"></textarea>
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Blog.RecDate">
+                                </label>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <textarea asp-for="@Model.Blog.RecDate" class="form-control" rows="10" cols="80"></textarea>
                                 </div>
                             </div>
                             <br />
@@ -72,7 +78,6 @@
 
 @section customScript{
     <script src="/ckeditor/ckeditor.js"></script>
-    <script src="/cdn.ckeditor.com/4.18.0/full/ckeditor.js"></script>
     <script>
         CKEDITOR.replace($(".editor").attr("id"));
     </script>

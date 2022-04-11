@@ -30,12 +30,22 @@ namespace Project.WebUI.Areas.admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Blog model)
+        public IActionResult Create(BlogVM model)
         {
             if (ModelState.IsValid)
             {
+                if (Request.Form.Files.Any())
+                {
+                    string blogPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "blog");
+                    if (!Directory.Exists(blogPath)) Directory.CreateDirectory(blogPath);
+                    using (var stream = new FileStream(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "blog", Request.Form.Files["Picture"].FileName), FileMode.Create))
+                    {
+                        Request.Form.Files["Picture"].CopyTo(stream);
+                    }
+                    model.BlogPicture.Path = "/img/blog/" + Request.Form.Files["Picture"].FileName;
+                }
 
-                repoBlog.Add(model);
+                repoBlog.Add(model.Blog);
 
             }
             return RedirectToAction("Index");

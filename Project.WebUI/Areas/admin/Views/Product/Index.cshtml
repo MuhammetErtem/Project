@@ -27,7 +27,7 @@
                                     <tr>
                                         <th> Ürün Adı </th>
                                         <th> Ürün Markası </th>
-                                        <th> Ürün Alt Kategorisi </th>
+                                        @*<th> Ürün Alt Kategorisi </th>*@
                                         <th> Stok Miktarı </th>
                                         <th> Fiyatı </th>
                                     </tr>
@@ -39,7 +39,7 @@
 
                                         <td class="py-1" style="vertical-align:middle"><a>@p.Name</a></td>
                                         <td class="py-1" style="vertical-align:middle"><a>@p.Brand.Name</a></td>
-                                        <td class="py-1" style="vertical-align:middle"><a>@p.SubCategory.Name</a></td>
+                                        @*<td class="py-1" style="vertical-align:middle"><a>@p.SubCategory.Name</a></td>*@
                                         <td class="py-1" style="vertical-align:middle"><a>@p.Stock</a></td>
                                         <td class="py-1" style="vertical-align:middle"><a>@p.Price</a></td>
                                         <th><a asp-action="Update" asp-route-id="@p.ID" class="btn btn-round btn-success float-right">Düzenle</a></th>

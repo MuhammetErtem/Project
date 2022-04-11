@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InfCommerce.DAL.Entities
+namespace Project.DAL.Entities
 {
     public enum ECurrency
     {

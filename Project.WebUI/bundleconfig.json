@@ -16,7 +16,8 @@
   },
   {
     "inputFiles": [
-      "wwwroot/js/site.js"
+      "wwwroot/js/site.js",
+      "wwwroot/js/Custom.js"
     ],
     "outputFileName": "wwwroot/js/main.js"
   }

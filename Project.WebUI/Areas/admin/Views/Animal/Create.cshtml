@@ -1,4 +1,4 @@
-﻿@model Animal
+﻿@model AnimalVM
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="page-header">
@@ -19,30 +19,37 @@
                             <p class="card-description">
                             </p>
                             <div class="item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Name">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Animal.Name">
                                 </label>
                                 <div class="col-md-6 col-sm-6 ">
-                                    <input asp-for="@Model.Name" class="form-control "><span style="color:red" asp-validation-for="@Model.Name"></span>
+                                    <input asp-for="@Model.Animal.Name" class="form-control "><span style="color:red" asp-validation-for="@Model.Animal.Name"></span>
                                 </div>
                             </div>
                             <div class="item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Description">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.AnimalPicture.Path">
                                 </label>
                                 <div class="col-md-6 col-sm-6 ">
-                                    <input asp-for="@Model.Description" class="form-control "><span style="color:red" asp-validation-for="@Model.Description"></span>
+                                    <input asp-for="@Model.AnimalPicture.Path" type="file" accept="image/*" class="form-control ">
                                 </div>
                             </div>
                             <div class="item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Information">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Animal.Description">
                                 </label>
                                 <div class="col-md-6 col-sm-6 ">
-                                    <input asp-for="@Model.Information" class="form-control "><span style="color:red" asp-validation-for="@Model.Information"></span>
+                                    <input asp-for="@Model.Animal.Description" class="editor "><span style="color:red" asp-validation-for="@Model.Animal.Description"></span>
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Animal.Information">
+                                </label>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <input asp-for="@Model.Animal.Information" class="form-control "><span style="color:red" asp-validation-for="@Model.Animal.Information"></span>
                                 </div>
                                 <div class="item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Number">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Animal.Number">
                                     </label>
                                     <div class="col-md-6 col-sm-6 ">
-                                        <input asp-for="@Model.Number" class="form-control "><span style="color:red" asp-validation-for="@Model.Number"></span>
+                                        <input asp-for="@Model.Animal.Number" class="form-control "><span style="color:red" asp-validation-for="@Model.Animal.Number"></span>
                                     </div>
                                 </div>
                             </div>
@@ -68,5 +75,9 @@
     </footer>
     <!-- Footer -->
 </div>
-
-<!-- /page content -->
+@section customScript{
+    <script src="/ckeditor/ckeditor.js"></script>
+    <script>
+    CKEDITOR.replace($(".editor").attr("id"));
+    </script>
+}

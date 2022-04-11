@@ -17,7 +17,7 @@
         </div>
         <div class="product__item__text">
             <h6>@Model.Name</h6>
-            <a href="#" class="add-cart">Sepete Ekle</a>
+            <a asp-controller="Product" asp-action="Detail" asp-route-name="@GeneralTool.ConvertURL(Model.Name)" asp-route-id="@Model.ID" class="add-cart">Sepete Ekle</a>
             <div class="rating">
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>

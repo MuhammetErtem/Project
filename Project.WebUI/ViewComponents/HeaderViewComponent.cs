@@ -19,7 +19,7 @@ namespace Project.WebUI.ViewComponents
         {
             HeaderVM headerVM = new HeaderVM
             {
-                Categories = repoCategory.GetAll().Include(i=>i.SubCategories)
+                Categories = repoCategory.GetAll().Include(i => i.SubCategories)
             };
             return View(headerVM);
         }

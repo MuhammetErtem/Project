@@ -43,6 +43,16 @@ namespace Project.WebUI.Areas.admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (Request.Form.Files.Any())
+                {
+                    string productPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "product");
+                    if (!Directory.Exists(productPath)) Directory.CreateDirectory(productPath);
+                    using (var stream = new FileStream(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "product", Request.Form.Files["Picture"].FileName), FileMode.Create))
+                    {
+                        Request.Form.Files["Picture"].CopyTo(stream);
+                    }
+                    model.ProductPicture.Path = "/img/product/" + Request.Form.Files["Picture"].FileName;
+                }
 
                 repoProduct.Add(model.Product);
 

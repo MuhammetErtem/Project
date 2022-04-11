@@ -44,14 +44,12 @@
                         @foreach (Category c in Model.Categories)
                         {
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                                    @c.Name
-                                </a>
+                                <a class="nav-link dropdown-toggle" asp-route="Category" asp-route-name="@GeneralTool.ConvertURL(c.Name)" asp-route-id="@c.ID" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">@c.Name</a>
+                                
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     @*@foreach (SubCategory s in Model.SubCategories)
                                     {
-                                        <a class="dropdown-item" asp-route="Category" asp-route-name="@GeneralTool.ConvertURL(s.Name)" asp-route-id="@s.ID">@s.Name</a>
-
+                                        <a class="dropdown-item" asp-route="SubCategory" asp-route-name="@GeneralTool.ConvertURL(s.Name)" asp-route-id="@s.ID">@s.Name</a>
                                     }*@
                                 </div>
                             </li>

@@ -26,10 +26,12 @@
                                     <input asp-for="@Model.Product.Name" class="form-control "><span style="color:red" asp-validation-for="@Model.Product.Name"></span>
                                 </div>
                             </div>
-                            <label asp-for="@Model.ProductPicture.Path"></label>
-                            <div class="item form-group custom-file">
-                                <input type="file" class="custom-file-input" accept="image/*" id="ImageFile" name="ImageFile">
-                                <label class="custom-file-label" for="ImageFile" data-browse="Gözat">Görsel dosyası seçiniz</label>
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.ProductPicture.Path">
+                                </label>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <input asp-for="@Model.ProductPicture.Path" type="file" accept="image/*" class="form-control ">
+                                </div>
                             </div>
                             <div class="item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Product.Description">
@@ -105,7 +107,6 @@
 
 @section customScript{
     <script src="/ckeditor/ckeditor.js"></script>
-    <script src="/cdn.ckeditor.com/4.18.0/full/ckeditor.js"></script>
     <script>
         CKEDITOR.replace($(".editor").attr("id"));
     </script>

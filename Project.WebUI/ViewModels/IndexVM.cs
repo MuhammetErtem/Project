@@ -9,6 +9,8 @@ namespace Project.WebUI.ViewModels
         public IEnumerable<Product> LatestProducts { get; set; }
         public IEnumerable<Product> BestSellerProducts { get; set; }
         public IEnumerable<Blog> Blogs { get; set; }
+        public IEnumerable<Blog> SimilarBlogsPictures { get; set; }
+        public IEnumerable<AnimalPicture> AnimalPictures { get; set; }
 
 
     }

@@ -56,7 +56,7 @@ namespace Project.DAL.Migrations
                         new
                         {
                             ID = 1,
-                            LastDate = new DateTime(2022, 4, 3, 18, 15, 5, 586, DateTimeKind.Local).AddTicks(3560),
+                            LastDate = new DateTime(2022, 4, 11, 20, 48, 54, 569, DateTimeKind.Local).AddTicks(5158),
                             LastIPNo = "1",
                             MailAddress = "Muhammet@gmail.com",
                             NameSurname = "Muhammet Ertem",
@@ -205,6 +205,23 @@ namespace Project.DAL.Migrations
                     b.ToTable("Category");
                 });
 
+            modelBuilder.Entity("Project.DAL.Entities.City", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("varchar(30)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("City");
+                });
+
             modelBuilder.Entity("Project.DAL.Entities.Contact", b =>
                 {
                     b.Property<int>("ID")
@@ -238,6 +255,147 @@ namespace Project.DAL.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Contact");
+                });
+
+            modelBuilder.Entity("Project.DAL.Entities.Distinct", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CityID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("varchar(30)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("CityID");
+
+                    b.ToTable("Distinct");
+                });
+
+            modelBuilder.Entity("Project.DAL.Entities.Order", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("BilingAddress")
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("BilingCity")
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<string>("BilingDistinct")
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<string>("BilingZipCode")
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<string>("DeliveryAddress")
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("DeliveryCity")
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<string>("DeliveryDistinct")
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<string>("DeliveryZipCode")
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<string>("IPNo")
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<string>("MailAddress")
+                        .HasMaxLength(80)
+                        .HasColumnType("varchar(80)");
+
+                    b.Property<string>("NameSurname")
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<string>("OrderNumber")
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<int>("OrderStatus")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Payment")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Phone")
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<DateTime>("RecDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("TaxNumber")
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<string>("TaxOffice")
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("OrderNumber")
+                        .IsUnique()
+                        .HasFilter("[OrderNumber] IS NOT NULL");
+
+                    b.ToTable("Order");
+                });
+
+            modelBuilder.Entity("Project.DAL.Entities.OrderDetail", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("OrderID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ProductName")
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("ProductPicture")
+                        .HasMaxLength(150)
+                        .HasColumnType("varchar(150)");
+
+                    b.Property<decimal>("ProductPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("OrderID");
+
+                    b.ToTable("OrderDetail");
                 });
 
             modelBuilder.Entity("Project.DAL.Entities.Product", b =>
@@ -392,6 +550,27 @@ namespace Project.DAL.Migrations
                     b.Navigation("Blog");
                 });
 
+            modelBuilder.Entity("Project.DAL.Entities.Distinct", b =>
+                {
+                    b.HasOne("Project.DAL.Entities.City", "City")
+                        .WithMany("Distincts")
+                        .HasForeignKey("CityID")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("City");
+                });
+
+            modelBuilder.Entity("Project.DAL.Entities.OrderDetail", b =>
+                {
+                    b.HasOne("Project.DAL.Entities.Order", "Order")
+                        .WithMany("OrderDetails")
+                        .HasForeignKey("OrderID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+                });
+
             modelBuilder.Entity("Project.DAL.Entities.Product", b =>
                 {
                     b.HasOne("Project.DAL.Entities.Brand", "Brand")
@@ -400,7 +579,7 @@ namespace Project.DAL.Migrations
                         .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("Project.DAL.Entities.SubCategory", "SubCategory")
-                        .WithMany("Product")
+                        .WithMany("Products")
                         .HasForeignKey("SubCategoryID");
 
                     b.Navigation("Brand");
@@ -449,6 +628,16 @@ namespace Project.DAL.Migrations
                     b.Navigation("SubCategories");
                 });
 
+            modelBuilder.Entity("Project.DAL.Entities.City", b =>
+                {
+                    b.Navigation("Distincts");
+                });
+
+            modelBuilder.Entity("Project.DAL.Entities.Order", b =>
+                {
+                    b.Navigation("OrderDetails");
+                });
+
             modelBuilder.Entity("Project.DAL.Entities.Product", b =>
                 {
                     b.Navigation("ProductPictures");
@@ -456,7 +645,7 @@ namespace Project.DAL.Migrations
 
             modelBuilder.Entity("Project.DAL.Entities.SubCategory", b =>
                 {
-                    b.Navigation("Product");
+                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }

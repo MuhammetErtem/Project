@@ -12,9 +12,11 @@ namespace Project.WebUI.Areas.admin.Controllers
     public class AnimalController : Controller
     {
         SqlRepo<Animal> repoAnimal;
-        public AnimalController(SqlRepo<Animal> _repoAnimal)
+        SqlRepo<AnimalPicture> repoAnimalPicture;
+        public AnimalController(SqlRepo<Animal> _repoAnimal, SqlRepo<AnimalPicture> _repoAnimalPicture)
         {
             repoAnimal = _repoAnimal;
+            repoAnimalPicture = _repoAnimalPicture;
         }
 
         public IActionResult Index()
@@ -28,12 +30,22 @@ namespace Project.WebUI.Areas.admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Animal model)
+        public IActionResult Create(AnimalVM model)
         {
             if (ModelState.IsValid)
             {
+                if (Request.Form.Files.Any())
+                {
+                    string animalPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "animal");
+                    if (!Directory.Exists(animalPath)) Directory.CreateDirectory(animalPath);
+                    using (var stream = new FileStream(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "animal", Request.Form.Files["Picture"].FileName), FileMode.Create))
+                    {
+                        Request.Form.Files["Picture"].CopyTo(stream);
+                    }
+                    model.AnimalPicture.Path = "/img/animal/" + Request.Form.Files["AnimalPicture"].FileName;
+                }
 
-                repoAnimal.Add(model);
+                repoAnimal.Add(model.Animal);
 
             }
             return RedirectToAction("Index");
