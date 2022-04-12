@@ -1,14 +1,15 @@
-﻿$(document).ready.(function () {
-
+﻿$(document).ready(function () {
 
     $(".addCart").click(function () {
         urunID = parseInt($(".stockQuantity").attr("urunID"));
         istenenMiktar = parseInt($(".stockQuantity").val());
-        db.StokMiktarı = parseInt($(".stockQuantity").attr("stokMiktari"));
-        if (istenenMiktar > dbStokMiktari) $(".istanenStokDurum").text("Bu üründen en fazla " + dbStokMiktari + " kadar sipariş verebilirsiniz.");
-        else addCart(urunID, istenenMiktar, dbStokMitari)
+        dbStokMiktari = parseInt($(".stockQuantity").attr("stokMiktari"));
+        if (istenenMiktar > dbStokMiktari) $(".istenenStokDurum").text("Bu üründen en fazla " + dbStokMiktari + " adet sipariş verebilirsiniz.");
+        else addCart(urunID, istenenMiktar, dbStokMiktari);
     });
-
+    if ($(".selectDeliveryCity").length) getDistrict($(".selectDeliveryCity"), 'selectDeliveryDistinct');
+    if ($(".selectBilingCity").length) getDistrict($(".selectBilingCity"), 'selectBilingDistinct');
+    getCartCount();
 });
 
 function addCart(pID, pQuantity, pStock) {

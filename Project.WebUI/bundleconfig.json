@@ -16,8 +16,13 @@
   },
   {
     "inputFiles": [
+      "wwwroot/js/jquery-3.3.1.min.js",
+      "wwwroot/js/bootstrap.min.js",
+      "wwwroot/js/jquery.slicknav.js",
+      "wwwroot/js/owl.carousel.min.js",
+      "wwwroot/js/jquery.nicescroll.min.js",
       "wwwroot/js/site.js",
-      "wwwroot/js/Custom.js"
+      "wwwroot/js/custom.js"
     ],
     "outputFileName": "wwwroot/js/main.js"
   }

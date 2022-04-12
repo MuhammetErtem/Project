@@ -87,9 +87,21 @@
                             <span> 5 Değerlendirme</span>
                         </div>
                         <h3>@Model.Product.Price ₺<span>@Model.Product.DiscountPrice ₺</span></h3>
-                        <p>
-                            @Model.Product.Description
-                        </p>
+                        @*<p>
+                                @Model.Product.Description
+                            </p>*@
+
+
+                        <h4 class="p-stock">
+                            @if (Model.Product.Stock > 0)
+                            {
+                                <span style="color:green">Stokta Mevcut</span>
+                            }
+                            else
+                            {
+                                <span style="color:gray">TÜKENDİ</span>
+                            }
+                        </h4>
                         <div class="product__details__cart__option">
                             <div class="quantity">
                                 <div class="pro-qty">

@@ -56,7 +56,7 @@ namespace Project.WebUI.Controllers
                 carts = new List<Cart>();
                 carts.Add(cart);
             }
-            else //daha önce sepete eklenen bir ürün var yani bir sepet cookie var
+            else //daha önce sepete eklenen bir ürün var yani bir sepet cookie var ise burası çalışsın
             {
                 carts = JsonConvert.DeserializeObject<List<Cart>>(Request.Cookies["SepetCookie"]);
                 bool urunSepetteVarmi = false;
@@ -72,8 +72,8 @@ namespace Project.WebUI.Controllers
             }
             result = product.Name;
             CookieOptions cookieOptions = new CookieOptions();
-            cookieOptions.Expires = DateTime.Now.AddDays(3);
-            Response.Cookies.Append("SepetCookie", JsonConvert.SerializeObject(carts), cookieOptions);
+            cookieOptions.Expires = DateTime.Now.AddDays(3); // Cookie deki saklanma ömrü burada belirlenir.
+            Response.Cookies.Append("SepetCookie", JsonConvert.SerializeObject(carts), cookieOptions);// içerisinde olanlar ne olacak onları yazıyoruz
             return result;
         }
 
