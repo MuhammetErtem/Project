@@ -65,7 +65,9 @@ namespace Project.WebUI.Areas.admin.Controllers
             ProductVM productVM = new ProductVM
             {
                 Product = repoProduct.GetBy(x => x.ID == id),
-                Brands = repoBrand.GetAll()
+                Brands = repoBrand.GetAll(),
+                SubCategories = repoSubCategory.GetAll()
+
             };
             return View(productVM);
         }

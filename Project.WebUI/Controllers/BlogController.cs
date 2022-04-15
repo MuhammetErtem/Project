@@ -19,7 +19,7 @@ namespace Project.WebUI.Controllers
         {
             BlogVM blogVM = new BlogVM
             {
-                ListBlog = repoBlog.GetAll().Include(i => i.BlogPictures).OrderByDescending(o => o.ID).Take(16),
+                ListBlog = repoBlog.GetAll().OrderByDescending(o => o.ID).Take(16),
             };
             return View(blogVM);
 
@@ -28,13 +28,12 @@ namespace Project.WebUI.Controllers
         [Route("/blog/{name}-{id}")]
         public IActionResult Detail(string name, int id)
         {
-            Blog blog = repoBlog.GetAll().Include(i => i.BlogPictures).FirstOrDefault(x => x.ID == id) ?? null;
+            Blog blog = repoBlog.GetAll().FirstOrDefault(x => x.ID == id) ?? null;
             if (blog != null)
             {
                 BlogVM blogVM = new BlogVM
                 {
                     Blog = blog,
-
                 };
                 return View(blogVM);
             }

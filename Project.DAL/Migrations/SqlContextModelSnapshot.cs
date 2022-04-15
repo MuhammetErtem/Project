@@ -56,7 +56,7 @@ namespace Project.DAL.Migrations
                         new
                         {
                             ID = 1,
-                            LastDate = new DateTime(2022, 4, 11, 20, 48, 54, 569, DateTimeKind.Local).AddTicks(5158),
+                            LastDate = new DateTime(2022, 4, 15, 16, 56, 22, 287, DateTimeKind.Local).AddTicks(9231),
                             LastIPNo = "1",
                             MailAddress = "Muhammet@gmail.com",
                             NameSurname = "Muhammet Ertem",
@@ -132,6 +132,10 @@ namespace Project.DAL.Migrations
                     b.Property<string>("Detail")
                         .HasColumnType("text");
 
+                    b.Property<string>("Picture")
+                        .HasMaxLength(150)
+                        .HasColumnType("varchar(150)");
+
                     b.Property<DateTime>("RecDate")
                         .HasColumnType("datetime2");
 
@@ -142,33 +146,6 @@ namespace Project.DAL.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Blog");
-                });
-
-            modelBuilder.Entity("Project.DAL.Entities.BlogPicture", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("BlogID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("varchar(30)");
-
-                    b.Property<string>("Path")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("varchar(150)");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("BlogID");
-
-                    b.ToTable("BlogPicture");
                 });
 
             modelBuilder.Entity("Project.DAL.Entities.Brand", b =>
@@ -182,6 +159,10 @@ namespace Project.DAL.Migrations
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("varchar(30)");
+
+                    b.Property<string>("Picture")
+                        .HasMaxLength(150)
+                        .HasColumnType("varchar(150)");
 
                     b.HasKey("ID");
 
@@ -475,10 +456,6 @@ namespace Project.DAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Description")
-                        .HasMaxLength(150)
-                        .HasColumnType("varchar(150)");
-
                     b.Property<int>("DisplayIndex")
                         .HasColumnType("int");
 
@@ -489,13 +466,6 @@ namespace Project.DAL.Migrations
                     b.Property<string>("Picture")
                         .HasMaxLength(150)
                         .HasColumnType("varchar(150)");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("Slogan")
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("Title")
                         .HasMaxLength(50)
@@ -537,17 +507,6 @@ namespace Project.DAL.Migrations
                         .IsRequired();
 
                     b.Navigation("Animal");
-                });
-
-            modelBuilder.Entity("Project.DAL.Entities.BlogPicture", b =>
-                {
-                    b.HasOne("Project.DAL.Entities.Blog", "Blog")
-                        .WithMany("BlogPictures")
-                        .HasForeignKey("BlogID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Blog");
                 });
 
             modelBuilder.Entity("Project.DAL.Entities.Distinct", b =>
@@ -611,11 +570,6 @@ namespace Project.DAL.Migrations
             modelBuilder.Entity("Project.DAL.Entities.Animal", b =>
                 {
                     b.Navigation("AnimalPictures");
-                });
-
-            modelBuilder.Entity("Project.DAL.Entities.Blog", b =>
-                {
-                    b.Navigation("BlogPictures");
                 });
 
             modelBuilder.Entity("Project.DAL.Entities.Brand", b =>

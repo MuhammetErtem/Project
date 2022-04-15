@@ -21,7 +21,7 @@ namespace Project.WebUI.Areas.admin.Controllers
 
         public IActionResult Index()
         {
-            return View(repoAnimal.GetAll().OrderByDescending(o=>o.ID));
+            return View(repoAnimal.GetAll().OrderByDescending(o => o.ID));
         }
 
         public IActionResult Create()
@@ -53,7 +53,11 @@ namespace Project.WebUI.Areas.admin.Controllers
 
         public IActionResult Update(int id)
         {
-            return View(repoAnimal.GetBy(x => x.ID == id));
+            AnimalVM animalVM = new AnimalVM
+            {
+                Animal = repoAnimal.GetBy(x => x.ID == id),
+            };
+            return View(animalVM);
         }
 
         [HttpPost]

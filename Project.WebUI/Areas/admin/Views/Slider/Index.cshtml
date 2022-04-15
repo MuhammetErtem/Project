@@ -42,7 +42,7 @@
                                             <td class="py-1" style="vertical-align:middle">@s.Link</td>
                                             <td class="py-1" style="vertical-align:middle">@s.DisplayIndex</td>
                                             <th><a asp-action="Update" asp-route-id="@s.ID" class="btn btn-round btn-success float-right">Düzenle</a></th>
-                                            <th><a onclick="deleteRecord('@s.Slogan','slider',@s.ID)" class="btn btn-round btn-danger float-right">Sil</a></th>
+                                            <th><a onclick="deleteRecord('@s.Title', 'slider',@s.ID)" class="btn btn-round btn-danger float-right">Sil</a></th>
                                         </tr>
                                         i++;
                                     }

@@ -25,17 +25,21 @@
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
+                                        <th> Marka Resmi</th>
                                         <th> Marka Adı</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach (Brand b in Model)
                                     {
-                                        <tr class="@(i%2==0?"even":"odd") pointer">
-                                            <td class="py-1" style="vertical-align:middle"><a>@b.Name</a></td>
-                                            <th><a asp-action="Update" asp-route-id="@b.ID" class="btn btn-round btn-success float-right">Düzenle</a></th>
-                                            <th><button onclick="deleteRecord('@b.Name','brand',@b.ID)" class="btn btn-round btn-danger float-right">Sil</button></th>
-                                        </tr>
+                                    <tr class="@(i%2==0?"even":"odd") pointer">
+                                        <td>
+                                            <img src="@b.Picture" width="192" height="48" />
+                                        </td>
+                                        <td class="py-1" style="vertical-align:middle"><a>@b.Name</a></td>
+                                        <th><a asp-action="Update" asp-route-id="@b.ID" class="btn btn-round btn-success float-right">Düzenle</a></th>
+                                        <th><button onclick="deleteRecord('@b.Name','brand',@b.ID)" class="btn btn-round btn-danger float-right">Sil</button></th>
+                                    </tr>
                                         i++;
                                     }
                                 </tbody>

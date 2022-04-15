@@ -38,14 +38,12 @@ namespace Project.WebUI.Areas.admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(SubCategory model)
+        public IActionResult Create(SubCategoryVM model)
         {
 
-            if (ModelState.IsValid)
-            {
-                if (repoSubCategory.GetBy(x => x.Name == model.Name) == null) repoSubCategory.Add(model);
-                else TempData["hata"] = "Aynı Alt Kategori Girilemez...";                    
-            }
+            if (repoSubCategory.GetBy(x => x.Name == model.SubCategory.Name) == null) repoSubCategory.Add(model.SubCategory);
+            else TempData["hata"] = "Aynı Alt Kategori Girilemez...";
+
             return RedirectToAction("Index");
         }
 
@@ -53,7 +51,7 @@ namespace Project.WebUI.Areas.admin.Controllers
         {
             SubCategoryVM subCategoryVM = new SubCategoryVM
             {
-                SubCategory = repoSubCategory.GetBy(x=> x.ID == id ),
+                SubCategory = repoSubCategory.GetBy(x => x.ID == id),
                 Categories = repoCategory.GetAll()
             };
             return View(subCategoryVM);

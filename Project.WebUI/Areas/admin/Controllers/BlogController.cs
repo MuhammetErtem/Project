@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.IO;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace Project.WebUI.Areas.admin.Controllers
 {
@@ -21,16 +22,16 @@ namespace Project.WebUI.Areas.admin.Controllers
 
         public IActionResult Index()
         {
-            return View(repoBlog.GetAll().ToList().OrderByDescending(o=>o.ID));
+            return View(repoBlog.GetAll().ToList().OrderByDescending(o => o.ID));
         }
 
         public IActionResult Create()
         {
-            return View();
+            return View(new Blog());
         }
 
         [HttpPost]
-        public IActionResult Create(BlogVM model)
+        public IActionResult Create(Blog model)
         {
             if (ModelState.IsValid)
             {
@@ -42,10 +43,12 @@ namespace Project.WebUI.Areas.admin.Controllers
                     {
                         Request.Form.Files["Picture"].CopyTo(stream);
                     }
-                    model.BlogPicture.Path = "/img/blog/" + Request.Form.Files["Picture"].FileName;
+                    model.Picture = "/img/blog/" + Request.Form.Files["Picture"].FileName;
                 }
 
-                repoBlog.Add(model.Blog);
+                repoBlog.Add(model);
+
+                model.RecDate = DateTime.Now;
 
             }
             return RedirectToAction("Index");
@@ -62,7 +65,21 @@ namespace Project.WebUI.Areas.admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                repoBlog.Update(model);
+                if (Request.Form.Files.Any())
+                {
+                    string blogPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "blog");
+                    if (!Directory.Exists(blogPath)) Directory.CreateDirectory(blogPath);
+                    using (var stream = new FileStream(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "blog", Request.Form.Files["Picture"].FileName), FileMode.Create))
+                    {
+                        Request.Form.Files["Picture"].CopyTo(stream);
+                    }
+                    model.Picture = "/img/blog/" + Request.Form.Files["Picture"].FileName;
+                }
+
+                repoBlog.Add(model);
+
+                model.RecDate = DateTime.Now;
+
             }
             return RedirectToAction("Index");
         }

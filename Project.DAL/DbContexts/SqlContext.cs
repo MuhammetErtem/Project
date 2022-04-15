@@ -25,7 +25,6 @@ namespace Project.DAL.DbContexts
         public DbSet<Brand> Brand { get; set; }
         public DbSet<Slider> Slider { get; set; }
         public DbSet<Blog> Blog { get; set; }
-        public DbSet<BlogPicture> BlogPicture { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<ProductPicture> ProductPicture { get; set; }
         public DbSet<Animal> Animal { get; set; }

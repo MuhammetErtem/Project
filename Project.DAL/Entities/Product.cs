@@ -38,8 +38,9 @@ namespace Project.DAL.Entities
 
         public Brand Brand { get; set; }
 
-        public int? SubCategoryID { get; set; }
         [Display(Name = "Alt Kategori")]
+
+        public int? SubCategoryID { get; set; }
 
         public SubCategory SubCategory { get; set; }
 

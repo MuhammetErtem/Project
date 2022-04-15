@@ -13,9 +13,10 @@ namespace Project.DAL.Entities
     {
         public int ID { get; set; }
 
-        [Column(TypeName ="varchar(30)"),Display(Name = "Marka Adı"),StringLength(30),Required(ErrorMessage ="Marka Boş Geçilemez...")]
+        [Column(TypeName = "varchar(30)"), Display(Name = "Marka Adı"), StringLength(30), Required(ErrorMessage = "Marka Boş Geçilemez...")]
         public string Name { get; set; }
-
+        [Column(TypeName = "varchar(150)"), Display(Name = "Resim Dosyası"), StringLength(150)]
+        public string Picture { get; set; }
         public ICollection<Product> Products { get; set; }
     }
 }
