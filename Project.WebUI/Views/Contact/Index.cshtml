@@ -28,7 +28,7 @@
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="contact__form">
-                    <form enctype="multipart/form-data">
+                    <form  class="contact__form" asp-controller="Contact" asp-action="Index">
                         <div class="row">
                             <div class="col-lg-6">
                                 <input asp-for="@Model.Contact.NameSurname" placeholder="Adı Soyadı">

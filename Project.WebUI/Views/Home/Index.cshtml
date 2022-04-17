@@ -82,29 +82,32 @@
 <!-- Categories Section Begin -->
 <section class="categories spad">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-3">
-                @*<div class="categories__text">
-                        <h2>Clothings Hot <br /> <span>Shoe Collection</span> <br /> Accessories</h2>
-                    </div>*@
-            </div>
-            <div class="col-lg-4">
-                <div class="categories__hot__deal">
-                    @*<img src="@Model.DiscountedProduct.FirstOrDefault().Path" alt="">*@
-                    <div class="hot__deal__sticker">
-                        <span>İndirim</span>
-                        @*<h5>@Model.DiscountedProduct.Price ₺</h5>*@
+        @foreach (Product p in Model.BestSellerProducts)
+        {
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="categories__text">
+                        <h2>@*Clothings Hot*@ <br /> <span>@*Shoe Collection*@</span> <br /> @*Accessories*@</h2>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="categories__hot__deal">
+                        <img src="@p.ProductPictures.FirstOrDefault().Path" alt="">
+                        <div class="hot__deal__sticker"  style="background-color: #883fab">
+                            <span>İndirim</span>
+                            <h5>@p.Price ₺</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 offset-lg-1">
+                    <div class="categories__deal__countdown">
+                        <span>Haftanın Ürünleri</span>
+                        <h2>@p.Name</h2>
+                        <a asp-controller="Product" asp-action="Detail" asp-route-name="@GeneralTool.ConvertURL(p.Name)" asp-route-id="@p.ID" class="primary-btn">Satın Al</a>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 offset-lg-1">
-                <div class="categories__deal__countdown">
-                    <span>Haftanın Fırsatı</span>
-                    @*<h2>@Model.DiscountedProduct.Name</h2>*@
-                    <a href="#" class="primary-btn">Satın Al</a>
-                </div>
-            </div>
-        </div>
+        }
     </div>
 </section>
 <!-- Categories Section End -->
@@ -116,17 +119,17 @@
                 <div class="instagram__pic">
                     @foreach (AnimalPicture a in Model.AnimalPictures)
                     {
-                    <div class="instagram__pic__item set-bg" data-setbg="@a.Path"></div>
+                    <div class="instagram__pic__item set-bg" data-setbg="@a.Picture"></div>
                     }
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="instagram__text">
-                    <h2>Sahiplen</h2>
+                    <h2  style="color: #883fab ">Sahiplen</h2>
                     <p>
                         Ücretsiz sahiplenebileceğiniz evcil hayvanlarımızı gördünüz mü?
                     </p>
-                    <h3><a asp-controller="Animal" asp-action="Index" class="primary-btn" style="background-color: #883fab ">Satın Alma Sahiplen</a></h3>
+                    <h3><a asp-controller="Animal" asp-action="Index" class="primary-btn">Satın Alma Sahiplen</a></h3>
                 </div>
             </div>
         </div>

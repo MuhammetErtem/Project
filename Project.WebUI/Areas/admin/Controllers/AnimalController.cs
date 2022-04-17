@@ -26,7 +26,7 @@ namespace Project.WebUI.Areas.admin.Controllers
 
         public IActionResult Create()
         {
-            return View();
+            return View(new AnimalVM());
         }
 
         [HttpPost]
@@ -42,11 +42,11 @@ namespace Project.WebUI.Areas.admin.Controllers
                     {
                         Request.Form.Files["Picture"].CopyTo(stream);
                     }
-                    model.AnimalPicture.Path = "/img/animal/" + Request.Form.Files["AnimalPicture"].FileName;
+                    model.AnimalPicture.Picture = "/img/animal/" + Request.Form.Files["Picture"].FileName;
                 }
 
                 repoAnimal.Add(model.Animal);
-
+                model.AnimalPicture.AnimalID = model.Animal.ID.GetHashCode();
             }
             return RedirectToAction("Index");
         }

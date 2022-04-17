@@ -31,7 +31,7 @@ namespace Project.WebUI.Controllers
             {
                 Slider = repoSlider.GetAll(),
                 LatestProducts = repoProduct.GetAll().Include(i => i.ProductPictures).OrderByDescending(o => o.ID).Take(8),
-                BestSellerProducts = repoProduct.GetAll().Include(i => i.ProductPictures).OrderBy(o => Guid.NewGuid()).Take(8),
+                BestSellerProducts = repoProduct.GetAll().Include(i => i.ProductPictures).OrderBy(o => Guid.NewGuid()).Take(1),
                 Blogs = repoBlog.GetAll().OrderByDescending(o => o.ID).Take(3),
                 AnimalPictures = repoAnimalPicture.GetAll().OrderBy(o => Guid.NewGuid()).Take(6),
             };

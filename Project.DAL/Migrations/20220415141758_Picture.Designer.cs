@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Project.DAL.DbContexts;
 
 namespace Project.DAL.Migrations
 {
     [DbContext(typeof(SqlContext))]
-    partial class SqlContextModelSnapshot : ModelSnapshot
+    [Migration("20220415141758_Picture")]
+    partial class Picture
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,7 +58,7 @@ namespace Project.DAL.Migrations
                         new
                         {
                             ID = 1,
-                            LastDate = new DateTime(2022, 4, 15, 18, 7, 17, 931, DateTimeKind.Local).AddTicks(4818),
+                            LastDate = new DateTime(2022, 4, 15, 17, 17, 57, 125, DateTimeKind.Local).AddTicks(8263),
                             LastIPNo = "1",
                             MailAddress = "Muhammet@gmail.com",
                             NameSurname = "Muhammet Ertem",
@@ -101,7 +103,7 @@ namespace Project.DAL.Migrations
                     b.Property<int>("AnimalID")
                         .HasColumnType("int");
 
-                    b.Property<string>("Picture")
+                    b.Property<string>("Path")
                         .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("varchar(150)");

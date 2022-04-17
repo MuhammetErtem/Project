@@ -12,9 +12,6 @@ namespace Project.DAL.Entities
     public class ProductPicture 
     {
         public int ID { get; set; }
-        [Column(TypeName ="varchar(30)"),Display(Name ="Ürün Resim Adı"),StringLength(30),Required(ErrorMessage ="Ürün Resim Adı Boş Geçilemez...")]
-        public string Name { get; set; }
-
         [Column(TypeName = "varchar(150)"), Display(Name = "Ürün Resmi"), StringLength(150), Required(ErrorMessage = "Ürün Resmi Boş Geçilemez...")]
         public string Path { get; set; }
         public int ProductID { get; set; }
