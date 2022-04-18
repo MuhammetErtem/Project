@@ -53,6 +53,17 @@
                                     <textarea asp-for="@Model.RecDate" class="editor" rows="10" cols="80"></textarea>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <div class="form-check ml-3">
+                                            <label class="form-check-label" asp-for="@Model.Enabled">
+                                                <input type="checkbox" class="form-check-input" checked asp-for="@Model.Enabled"> Etkin
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <br />
                             <div class="item form-group">
                                 <div class="col-md-6 col-sm-6 offset-md-3">

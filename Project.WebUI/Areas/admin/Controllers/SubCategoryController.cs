@@ -31,7 +31,7 @@ namespace Project.WebUI.Areas.admin.Controllers
         {
             SubCategoryVM subCategoryVM = new SubCategoryVM
             {
-                SubCategory = new SubCategory(),
+                SubCategory = new SubCategory { Enabled = true },
                 Categories = repoCategory.GetAll()
             };
             return View(subCategoryVM);

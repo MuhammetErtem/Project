@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Project.DAL.DbContexts;
 
 namespace Project.DAL.Migrations
 {
     [DbContext(typeof(SqlContext))]
-    partial class SqlContextModelSnapshot : ModelSnapshot
+    [Migration("20220418132725_Comment")]
+    partial class Comment
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,7 +58,7 @@ namespace Project.DAL.Migrations
                         new
                         {
                             ID = 1,
-                            LastDate = new DateTime(2022, 4, 18, 20, 59, 55, 471, DateTimeKind.Local).AddTicks(8064),
+                            LastDate = new DateTime(2022, 4, 18, 16, 27, 24, 738, DateTimeKind.Local).AddTicks(5148),
                             LastIPNo = "1",
                             MailAddress = "Muhammet@gmail.com",
                             NameSurname = "Muhammet Ertem",
@@ -214,16 +216,9 @@ namespace Project.DAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("BlogID")
-                        .HasColumnType("int");
-
                     b.Property<string>("Commentary")
                         .HasMaxLength(250)
                         .HasColumnType("varchar(250)");
-
-                    b.Property<string>("IPNo")
-                        .HasMaxLength(20)
-                        .HasColumnType("varchar(20)");
 
                     b.Property<string>("MailAddress")
                         .HasMaxLength(80)
@@ -233,12 +228,7 @@ namespace Project.DAL.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("varchar(50)");
 
-                    b.Property<DateTime>("RecDate")
-                        .HasColumnType("datetime2");
-
                     b.HasKey("ID");
-
-                    b.HasIndex("BlogID");
 
                     b.ToTable("Comment");
                 });
@@ -553,16 +543,6 @@ namespace Project.DAL.Migrations
                     b.Navigation("Animal");
                 });
 
-            modelBuilder.Entity("Project.DAL.Entities.Comment", b =>
-                {
-                    b.HasOne("Project.DAL.Entities.Blog", "Blog")
-                        .WithMany("Comments")
-                        .HasForeignKey("BlogID")
-                        .OnDelete(DeleteBehavior.SetNull);
-
-                    b.Navigation("Blog");
-                });
-
             modelBuilder.Entity("Project.DAL.Entities.Distinct", b =>
                 {
                     b.HasOne("Project.DAL.Entities.City", "City")
@@ -624,11 +604,6 @@ namespace Project.DAL.Migrations
             modelBuilder.Entity("Project.DAL.Entities.Animal", b =>
                 {
                     b.Navigation("AnimalPictures");
-                });
-
-            modelBuilder.Entity("Project.DAL.Entities.Blog", b =>
-                {
-                    b.Navigation("Comments");
                 });
 
             modelBuilder.Entity("Project.DAL.Entities.Brand", b =>

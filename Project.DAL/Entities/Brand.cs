@@ -18,5 +18,8 @@ namespace Project.DAL.Entities
         [Column(TypeName = "varchar(150)"), Display(Name = "Resim Dosyası"), StringLength(150)]
         public string Picture { get; set; }
         public ICollection<Product> Products { get; set; }
+
+        [Display(Name = "Etkin")]
+        public bool Enabled { get; set; }
     }
 }

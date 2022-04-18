@@ -11,9 +11,11 @@ namespace Project.WebUI.Controllers
     public class BlogController : Controller
     {
         SqlRepo<Blog> repoBlog;
-        public BlogController(SqlRepo<Blog> _repoBlog)
+        SqlRepo<Comment> repoComment;
+        public BlogController(SqlRepo<Blog> _repoBlog, SqlRepo<Comment> _repoComment)
         {
             repoBlog = _repoBlog;
+            repoComment = _repoComment;
         }
         public IActionResult Index()
         {
@@ -24,20 +26,31 @@ namespace Project.WebUI.Controllers
             return View(blogVM);
 
         }
-    
+
         [Route("/blog/{name}-{id}")]
-        public IActionResult Detail(string name, int id)
+        public IActionResult Detail(BlogVM model, int id)
         {
             Blog blog = repoBlog.GetAll().FirstOrDefault(x => x.ID == id) ?? null;
-            if (blog != null)
+            if (model.Comment != null)
             {
-                BlogVM blogVM = new BlogVM
-                {
-                    Blog = blog,
-                };
-                return View(blogVM);
+                repoComment.Add(model.Comment);
+                string[] mailto = new string[] { model.Comment.MailAddress };
+                
             }
-            else return Redirect("/");
+            else
+            {
+                if (blog != null)
+                {
+                    BlogVM blogVM = new BlogVM
+                    {
+
+                        PostComment = repoComment.GetAll().OrderByDescending(p => p.ID),
+                        Blog = blog,
+                    };
+                    return View(blogVM);
+                }
+            }
+            return RedirectToAction("Index");
         }
     }
 }

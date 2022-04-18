@@ -44,5 +44,8 @@ namespace Project.DAL.Entities
 
         public SubCategory SubCategory { get; set; }
 
+        [Display(Name = "Etkin")]
+        public bool Enabled { get; set; }
+
     }
 }

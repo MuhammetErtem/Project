@@ -82,6 +82,17 @@
                                     <select asp-for="@Model.Product.SubCategoryID" class="form-control" asp-items="@Model.SubCategories.Select(s=>new SelectListItem{Value=s.ID.ToString(),Text=@s.Name})"></select>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <div class="form-check ml-3">
+                                            <label class="form-check-label" asp-for="@Model.Product.Enabled">
+                                                <input type="checkbox" class="form-check-input" checked asp-for="@Model.Product.Enabled"> Etkin
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <br />
                             <div class="item form-group">
                                 <div class="col-md-6 col-sm-6 offset-md-3">

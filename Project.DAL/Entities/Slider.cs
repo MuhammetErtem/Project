@@ -23,5 +23,8 @@ namespace Project.DAL.Entities
         public string Link { get; set; }
         [Display(Name = "Görüntülenme Sırası")]
         public int DisplayIndex { get; set; }
+
+        [Display(Name = "Etkin")]
+        public bool Enabled { get; set; }
     }
 }

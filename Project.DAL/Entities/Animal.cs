@@ -23,5 +23,8 @@ namespace Project.DAL.Entities
         [Column(TypeName = "varchar(11)"), Display(Name = "Sahiplendirecek Kişinin Telefon Numarası")]
         public string Number { get; set; }
         public List<AnimalPicture> AnimalPictures { get; set; }
+
+        [Display(Name = "Etkin")]
+        public bool Enabled { get; set; }
     }
 }

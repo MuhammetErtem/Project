@@ -31,7 +31,7 @@ namespace Project.WebUI.Areas.admin.Controllers
         {
             ProductVM productVM = new ProductVM
             {
-                Product = new Product(),
+                Product = new Product { Enabled = true },
                 Brands = repoBrand.GetAll(),
                 SubCategories = repoSubCategory.GetAll()
             };

@@ -21,5 +21,8 @@ namespace Project.DAL.Entities
 
         public Category Category { get; set; }
         public ICollection<Product> Products { get; set; }
+
+        [Display(Name = "Etkin")]
+        public bool Enabled { get; set; }
     }
 }

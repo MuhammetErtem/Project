@@ -27,5 +27,11 @@ namespace Project.DAL.Entities
         [Display(Name = "Kayıt Tarihi")]
         public DateTime RecDate { get; set; }
 
+        [Display(Name = "Etkin")]
+        public bool Enabled { get; set; }
+
+        public ICollection<Comment> Comments { get; set; }
+
+
     }
 }

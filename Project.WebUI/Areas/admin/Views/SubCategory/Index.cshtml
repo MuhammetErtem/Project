@@ -27,18 +27,33 @@
                                     <tr>
                                         <th> Alt Kategori Adı</th>
                                         <th> Kategorisi </th>
+                                        <th> Durum </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach (SubCategory s in Model)
                                     {
-                                        <tr class="@(i%2==0?"even":"odd") pointer">
-                                            <td class="py-1" style="vertical-align:middle"><a>@s.Name</a></td>
-                                            <td class="py-1" style="vertical-align:middle"><a>@s.Category.Name</a></td>
+                                    <tr class="@(i%2==0?"even":"odd") pointer">
+                                        <td class="py-1" style="vertical-align:middle"><a>@s.Name</a></td>
+                                        <td class="py-1" style="vertical-align:middle"><a>@s.Category.Name</a></td>
+                                        <td>
+                                            @if (s.Enabled)
+                                            {
+                                                <span class="text-primary">
+                                                    <i class="mdi mdi-playlist-check"></i>
+                                                </span>
+                                            }
+                                            else
+                                            {
+                                                <span class="text-danger">
+                                                    <i class="mdi mdi-playlist-remove"></i>
+                                                </span>
+                                            }
+                                        </td>
 
-                                            <th><a asp-action="Update" asp-route-id="@s.ID" class="btn btn-round btn-success float-right">Düzenle</a></th>
-                                            <th><button onclick="deleteRecord('@s.Name','subcategory',@s.ID)" class="btn btn-round btn-danger float-right">Sil</button></th>
-                                        </tr>
+                                        <th><a asp-action="Update" asp-route-id="@s.ID" class="btn btn-round btn-success float-right">Düzenle</a></th>
+                                        <th><button onclick="deleteRecord('@s.Name','subcategory',@s.ID)" class="btn btn-round btn-danger float-right">Sil</button></th>
+                                    </tr>
                                         i++;
                                     }
                                 </tbody>
