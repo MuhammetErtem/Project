@@ -25,14 +25,14 @@ namespace Project.WebUI.Controllers
             repoBlog = _repoBlog;
             repoAnimalPicture = _repoAnimalPicture;
         }
-        public IActionResult Index()
+        public IActionResult Index(int id)
         {
             IndexVM indexVM = new IndexVM
             {
                 Slider = repoSlider.GetAll(),
-                LatestProducts = repoProduct.GetAll().Include(i => i.ProductPictures).OrderByDescending(o => o.ID).Take(8),
-                BestSellerProducts = repoProduct.GetAll().Include(i => i.ProductPictures).OrderBy(o => Guid.NewGuid()).Take(1),
-                Blogs = repoBlog.GetAll().OrderByDescending(o => o.ID).Take(3),
+                LatestProducts = repoProduct.GetAll().Include(i => i.ProductPictures).OrderByDescending(o => o.ID).Where(o => o.Enabled).Take(8),
+                BestSellerProducts = repoProduct.GetAll().Include(i => i.ProductPictures).OrderBy(o => Guid.NewGuid()).Where(o => o.Enabled).Take(1),
+                Blogs = repoBlog.GetAll().OrderByDescending(o => o.ID).Where(o => o.Enabled).Take(3),
                 AnimalPictures = repoAnimalPicture.GetAll().OrderBy(o => Guid.NewGuid()).Take(6),
             };
             return View(indexVM);

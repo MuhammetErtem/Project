@@ -58,7 +58,22 @@ namespace Project.WebUI.Areas.admin.Controllers
         [HttpPost]
         public IActionResult Update(Brand model)
         {
-            if (ModelState.IsValid) repoBrand.Update(model);
+            repoBrand.Update(model);
+            if (repoBrand.GetBy(x => x.Name == model.Name) == null) repoBrand.Add(model);
+            else if (Request.Form.Files.Any())
+            {
+                {
+                    string brandPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "brand");
+                    if (!Directory.Exists(brandPath)) Directory.CreateDirectory(brandPath);
+                    using (var stream = new FileStream(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "brand", Request.Form.Files["Picture"].FileName), FileMode.Create))
+                    {
+                        Request.Form.Files["Picture"].CopyTo(stream);
+                    }
+                    model.Picture = "/img/brand/" + Request.Form.Files["Picture"].FileName;
+                }
+                repoBrand.Update(model);
+            }
+            else TempData["hata"] = "Aynı marka girilemez...";
             return RedirectToAction("Index");
         }
 

@@ -15,11 +15,11 @@ namespace Project.WebUI.Controllers
         {
             repoAnimal = _repoAnimal;
         }
-        public IActionResult Index()
+        public IActionResult Index(int id)
         {
             AnimalVM animalVM = new AnimalVM
             {
-                ListAnimal = repoAnimal.GetAll().Include(i => i.AnimalPictures).OrderByDescending(o => o.ID).Take(16),
+                ListAnimal = repoAnimal.GetAll().Include(i => i.AnimalPictures).OrderByDescending(o => o.ID).Where(p => p.ID == id && p.Enabled).Take(16),
                 
             };
             return View(animalVM);
@@ -28,13 +28,13 @@ namespace Project.WebUI.Controllers
         [Route("/animal/{name}-{id}")]
         public IActionResult Detail(string name, int id)
         {
-            Animal animal = repoAnimal.GetAll().Include(i => i.AnimalPictures).FirstOrDefault(x => x.ID == id) ?? null;
+            Animal animal = repoAnimal.GetAll().Include(i => i.AnimalPictures).Where(p => p.ID == id && p.Enabled).FirstOrDefault(x => x.ID == id) ?? null;
             if (animal != null)
             {
                 AnimalVM animalVM = new AnimalVM
                 {
                     Animal = animal,
-                    SimilarAnimals = repoAnimal.GetAll().Include(i => i.AnimalPictures).Take(4)
+                    SimilarAnimals = repoAnimal.GetAll().Include(i => i.AnimalPictures).Where(p => p.ID == id && p.Enabled).Take(4)
 
                 };
                 return View(animalVM);

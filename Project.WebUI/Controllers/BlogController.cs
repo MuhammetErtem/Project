@@ -30,7 +30,7 @@ namespace Project.WebUI.Controllers
         [Route("/blog/{name}-{id}")]
         public IActionResult Detail(BlogVM model, int id)
         {
-            Blog blog = repoBlog.GetAll().FirstOrDefault(x => x.ID == id) ?? null;
+            Blog blog = repoBlog.GetAll().Where(p => p.ID == id && p.Enabled).FirstOrDefault(x => x.ID == id) ?? null;
             if (model.Comment != null)
             {
                 repoComment.Add(model.Comment);
