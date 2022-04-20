@@ -60,7 +60,7 @@ namespace Project.WebUI.Areas.admin.Controllers
         [HttpPost]
         public IActionResult Update(SubCategory model)
         {
-            if (ModelState.IsValid) repoSubCategory.Update(model);
+            if (repoSubCategory.GetBy(x => x.Name == model.Name) == null) repoSubCategory.Update(model);
             return RedirectToAction("Index");
         }
 

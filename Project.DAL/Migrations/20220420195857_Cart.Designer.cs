@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Project.DAL.DbContexts;
 
 namespace Project.DAL.Migrations
 {
     [DbContext(typeof(SqlContext))]
-    partial class SqlContextModelSnapshot : ModelSnapshot
+    [Migration("20220420195857_Cart")]
+    partial class Cart
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,7 +58,7 @@ namespace Project.DAL.Migrations
                         new
                         {
                             ID = 1,
-                            LastDate = new DateTime(2022, 4, 20, 23, 0, 58, 129, DateTimeKind.Local).AddTicks(4633),
+                            LastDate = new DateTime(2022, 4, 20, 22, 58, 56, 81, DateTimeKind.Local).AddTicks(8452),
                             LastIPNo = "1",
                             MailAddress = "Muhammet@gmail.com",
                             NameSurname = "Muhammet Ertem",
@@ -417,21 +419,6 @@ namespace Project.DAL.Migrations
                     b.HasIndex("OrderID");
 
                     b.ToTable("OrderDetail");
-                });
-
-            modelBuilder.Entity("Project.DAL.Entities.PriceCargo", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<decimal>("CargoPrice")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("PriceCargo");
                 });
 
             modelBuilder.Entity("Project.DAL.Entities.Product", b =>

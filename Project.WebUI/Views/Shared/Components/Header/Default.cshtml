@@ -50,12 +50,12 @@
                                         @c.Name
                                     </a>
 
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    @*<div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         @foreach (SubCategory s in Model.SubCategories)
                                         {
                                             <a class="dropdown-item" asp-route="SubCategory" asp-route-name="@GeneralTool.ConvertURL(s.Name)" asp-route-id="@s.ID">@s.Name</a>
                                         }
-                                    </div>
+                                    </div>*@
                                 </li>
                             }
                         </ul>
@@ -65,8 +65,8 @@
                     <div class="header__nav__option">
                         <a href="#" class="search-switch"><img src="/img/icon/search.png" alt=""></a>
                         <a href="#"><img src="/img/icon/heart.png" alt=""></a>
-                        <a href="#"><img src="/img/icon/cart.png" alt=""> <span>0</span></a>
-                        <div class="price">$0.00</div>
+                        <a asp-controller="Cart" asp-action="Index"><img src="/img/icon/cart.png" alt=""> <span>0</span></a>
+                        <div class="price">0.00 ₺</div>
                     </div>
                 </div>
             </div>

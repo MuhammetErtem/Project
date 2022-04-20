@@ -76,7 +76,7 @@ namespace Project.WebUI.Areas.admin.Controllers
                     model.Picture = "/img/blog/" + Request.Form.Files["Picture"].FileName;
                 }
 
-                repoBlog.Add(model);
+                repoBlog.Update(model);
 
                 model.RecDate = DateTime.Now;
 

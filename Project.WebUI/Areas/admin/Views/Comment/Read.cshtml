@@ -1,13 +1,13 @@
-﻿@model Contact
+﻿@model Comment
 
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="page-header">
-            <h3 class="page-title"> Mesajlar </h3>
+            <h3 class="page-title"> Yorumlar </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#"> Mesajı Oku </a></li>
-                    <li class="breadcrumb-item active" aria-current="page"> Mesajlar </li>
+                    <li class="breadcrumb-item"><a href="#"> Yorumu Oku </a></li>
+                    <li class="breadcrumb-item active" aria-current="page"> Yorumlar </li>
                 </ol>
             </nav>
         </div>
@@ -19,10 +19,10 @@
                             <h4 class="card-title">@Model.NameSurname</h4>
                             <h4 class="card-title">@Model.MailAddress</h4>
                             <p class="card-description"> @Model.RecDate.ToShortDateString()</p>
-                            <p> @Model.Message</p>
+                            <p> @Model.Commentary</p>
                             @*<p class="card-description"> @Model.IPNo </p>*@
                         </div>
-                        <h4 class="card-title"><a asp-action="Cancel" class="btn btn-round btn-danger float-right mr-3" style="color:#fff">Mesajlar</a></h4>
+                        <h4 class="card-title"><a asp-action="Cancel" class="btn btn-round btn-danger float-right mr-3" style="color:#fff">Yorumlar</a></h4>
                         <p class="card-description">
                         </p>
                     </div>

@@ -703,7 +703,7 @@ animateIn:!1},e.prototype.swap=function(){if(1===this.core.settings.items&&a.sup
     /*--------------------------
         Select
     ----------------------------*/
-    $("select").niceSelect();
+    /*$("select").niceSelect();*/
 
     /*-------------------
 		Radio Btn
@@ -749,16 +749,16 @@ animateIn:!1},e.prototype.swap=function(){if(1===this.core.settings.items&&a.sup
 
     /* var timerdate = "2020/12/30" */
 
-    $("#countdown").countdown(timerdate, function (event) {
-        $(this).html(event.strftime("<div class='cd-item'><span>%D</span> <p>Days</p> </div>" + "<div class='cd-item'><span>%H</span> <p>Hours</p> </div>" + "<div class='cd-item'><span>%M</span> <p>Minutes</p> </div>" + "<div class='cd-item'><span>%S</span> <p>Seconds</p> </div>"));
-    });
+    //$("#countdown").countdown(timerdate, function (event) {
+    //    $(this).html(event.strftime("<div class='cd-item'><span>%D</span> <p>Days</p> </div>" + "<div class='cd-item'><span>%H</span> <p>Hours</p> </div>" + "<div class='cd-item'><span>%M</span> <p>Minutes</p> </div>" + "<div class='cd-item'><span>%S</span> <p>Seconds</p> </div>"));
+    //});
 
     /*------------------
 		Magnific
 	--------------------*/
-    $('.video-popup').magnificPopup({
-        type: 'iframe'
-    });
+    //$('.video-popup').magnificPopup({
+    //    type: 'iframe'
+    //});
 
     /*-------------------
 		Quantity change
@@ -861,24 +861,24 @@ function getCartCount() {
     });
 }
 
-function getDistrict(_objeCity, _objeDistinct) {
-    $.ajax({
-        type: "GET",
-        url: "/sepet/ilcegetir",
-        data: { "cityID": $(_objeCity).val() },
-        success: function (data) {
-            $("." + _objeDistinct).empty();
-            $.each(data, function (i, v) {
-                $("." + _objeDistinct).append("<option value='" + v.id + "'>" + v.name + "</option>")
-            })
-        },
-        error: function (e) {
-            alert(e.responseText);
-        }
-    });
-}
+//function getDistrict(_objeCity, _objeDistinct) {
+//    $.ajax({
+//        type: "GET",
+//        url: "/sepet/ilcegetir",
+//        data: { "cityID": $(_objeCity).val() },
+//        success: function (data) {
+//            $("." + _objeDistinct).empty();
+//            $.each(data, function (i, v) {
+//                $("." + _objeDistinct).append("<option value='" + v.id + "'>" + v.name + "</option>")
+//            })
+//        },
+//        error: function (e) {
+//            alert(e.responseText);
+//        }
+//    });
+//}
 
-function deliveryNotBiling(_obje) {
-    if (!$(_obje).prop("checked")) $(".bilingInputs").slideDown();
-    else $(".bilingInputs").slideUp();
-}
+//function deliveryNotBiling(_obje) {
+//    if (!$(_obje).prop("checked")) $(".bilingInputs").slideDown();
+//    else $(".bilingInputs").slideUp();
+//}

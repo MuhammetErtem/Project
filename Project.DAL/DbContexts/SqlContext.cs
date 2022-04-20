@@ -37,6 +37,7 @@ namespace Project.DAL.DbContexts
         public DbSet<OrderDetail> OrderDetail { get; set; }
         public DbSet<City> City { get; set; }
         public DbSet<Distinct> Distinct { get; set; }
+        public DbSet<PriceCargo> PriceCargo { get; set; }
 
 
 

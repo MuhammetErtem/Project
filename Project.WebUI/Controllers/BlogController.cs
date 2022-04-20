@@ -50,7 +50,7 @@ namespace Project.WebUI.Controllers
                     return View(blogVM);
                 }
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Detail");
         }
     }
 }

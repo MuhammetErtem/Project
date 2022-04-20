@@ -42,24 +42,24 @@ function getCartCount() {
     });
 }
 
-function getDistrict(_objeCity, _objeDistinct) {
-    $.ajax({
-        type: "GET",
-        url: "/sepet/ilcegetir",
-        data: { "cityID": $(_objeCity).val() },
-        success: function (data) {
-            $("." + _objeDistinct).empty();
-            $.each(data, function (i, v) {
-                $("." + _objeDistinct).append("<option value='" + v.id + "'>" + v.name + "</option>")
-            })
-        },
-        error: function (e) {
-            alert(e.responseText);
-        }
-    });
-}
+//function getDistrict(_objeCity, _objeDistinct) {
+//    $.ajax({
+//        type: "GET",
+//        url: "/sepet/ilcegetir",
+//        data: { "cityID": $(_objeCity).val() },
+//        success: function (data) {
+//            $("." + _objeDistinct).empty();
+//            $.each(data, function (i, v) {
+//                $("." + _objeDistinct).append("<option value='" + v.id + "'>" + v.name + "</option>")
+//            })
+//        },
+//        error: function (e) {
+//            alert(e.responseText);
+//        }
+//    });
+//}
 
-function deliveryNotBiling(_obje) {
-    if (!$(_obje).prop("checked")) $(".bilingInputs").slideDown();
-    else $(".bilingInputs").slideUp();
-}
+//function deliveryNotBiling(_obje) {
+//    if (!$(_obje).prop("checked")) $(".bilingInputs").slideDown();
+//    else $(".bilingInputs").slideUp();
+//}
