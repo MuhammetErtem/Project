@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using Project.BL.Repositories;
 using Project.DAL.Entities;
 using Project.WebUI.Models;
+using Project.WebUI.Tools;
 using Project.WebUI.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -42,12 +43,12 @@ namespace Project.WebUI.Controllers
             List<Cart> carts;
             Product product = repoProduct.GetAll().Include(i => i.ProductPictures).First(x => x.ID == productID) ?? null;
             string picture = product.ProductPictures.First().Path;
-            if (string.IsNullOrEmpty(picture)) picture = "/img/product/noproduct.jpg";
+            if (string.IsNullOrEmpty(picture)) picture = "/img/noproduct.jpg";
             Cart cart = new Cart
             {
                 ID = product.ID,
                 Name = product.Name,
-                //Price = GeneralTool.GetCurrency(product.Price,product.Currency),
+                Price = product.Price,
                 Quantity = quantity,
                 Picture = picture
             };
@@ -56,7 +57,7 @@ namespace Project.WebUI.Controllers
                 carts = new List<Cart>();
                 carts.Add(cart);
             }
-            else //daha önce sepete eklenen bir ürün var yani bir sepet cookie var ise burası çalışsın
+            else //daha önce sepete eklenen bir ürün var yani bir sepet cookie var
             {
                 carts = JsonConvert.DeserializeObject<List<Cart>>(Request.Cookies["SepetCookie"]);
                 bool urunSepetteVarmi = false;
@@ -72,9 +73,10 @@ namespace Project.WebUI.Controllers
             }
             result = product.Name;
             CookieOptions cookieOptions = new CookieOptions();
-            cookieOptions.Expires = DateTime.Now.AddDays(3); // Cookie deki saklanma ömrü burada belirlenir.
-            Response.Cookies.Append("SepetCookie", JsonConvert.SerializeObject(carts), cookieOptions);// içerisinde olanlar ne olacak onları yazıyoruz
+            cookieOptions.Expires = DateTime.Now.AddDays(3);
+            Response.Cookies.Append("SepetCookie", JsonConvert.SerializeObject(carts), cookieOptions);
             return result;
+
         }
 
         [Route("/sepet/urunsayisiver")]
@@ -84,7 +86,18 @@ namespace Project.WebUI.Controllers
             if (Request.Cookies["SepetCookie"] != null)
             {
                 List<Cart> carts = JsonConvert.DeserializeObject<List<Cart>>(Request.Cookies["SepetCookie"]);
-                result = carts.Sum(c=>c.Quantity);
+                result = carts.Sum(c => c.Quantity);
+            }
+            return result;
+        }
+        [Route("/sepet/urunfiyativer")]
+        public decimal GetCartPrice()
+        {
+            decimal result = 0;
+            if (Request.Cookies["SepetCookie"] != null)
+            {
+                List<Cart> carts = JsonConvert.DeserializeObject<List<Cart>>(Request.Cookies["SepetCookie"]);
+                result = (decimal)carts.Sum(c => c.Price);
             }
             return result;
         }
@@ -95,7 +108,7 @@ namespace Project.WebUI.Controllers
             if (Request.Cookies["SepetCookie"] != null)
             {
                 List<Cart> carts = JsonConvert.DeserializeObject<List<Cart>>(Request.Cookies["SepetCookie"]);
-                CheckOutVM checkOutVM=new CheckOutVM { Carts= carts,Order=new Order(),Cities=repoCity.GetAll()};
+                CheckOutVM checkOutVM = new CheckOutVM { Carts = carts, Order = new Order(), Cities = repoCity.GetAll() };
                 return View(checkOutVM);
             }
             else return Redirect("/");
@@ -104,7 +117,7 @@ namespace Project.WebUI.Controllers
         [Route("/sepet/ilcegetir")]
         public List<Distinct> getDistrict(int cityID)
         {
-            return repoDistinct.GetAll(x=>x.CityID==cityID).ToList();
+            return repoDistinct.GetAll(x => x.CityID == cityID).ToList();
         }
     }
 }
