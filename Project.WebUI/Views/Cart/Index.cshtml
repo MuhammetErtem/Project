@@ -87,7 +87,7 @@
                             <li>Kargo<span style=" color: #883fab ">Ücretsiz Kargo</span></li>
                             <li>Toplam <span>@Model.Sum(s => s.Price * s.Quantity).ToString("#0.00") ₺</span></li>
                         </ul>
-                        <a href="#" class="primary-btn">Ödeme Yöntemi</a>
+                        <a asp-controller="Cart" asp-action="CheckOut" class="primary-btn">Ödeme Yöntemi</a>
                     </div>
                 </div>
             </div>

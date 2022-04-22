@@ -17,12 +17,12 @@ namespace Project.WebUI.Controllers
     {
         SqlRepo<Product> repoProduct;
         SqlRepo<City> repoCity;
-        SqlRepo<Distinct> repoDistinct;
-        public CartController(SqlRepo<Product> _repoProduct, SqlRepo<City> _repoCity, SqlRepo<Distinct> _repoDistinct)
+        SqlRepo<District> repoDistrict;
+        public CartController(SqlRepo<Product> _repoProduct, SqlRepo<City> _repoCity, SqlRepo<District> _repoDistrict)
         {
             repoProduct = _repoProduct;
             repoCity = _repoCity;
-            repoDistinct = _repoDistinct;
+            repoDistrict = _repoDistrict;
         }
 
         [Route("/sepetim")]
@@ -115,9 +115,9 @@ namespace Project.WebUI.Controllers
         }
 
         [Route("/sepet/ilcegetir")]
-        public List<Distinct> getDistrict(int cityID)
+        public List<District> getDistrict(int cityID)
         {
-            return repoDistinct.GetAll(x => x.CityID == cityID).ToList();
+            return repoDistrict.GetAll(x => x.CityID == cityID).ToList();
         }
     }
 }

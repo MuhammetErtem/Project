@@ -13,7 +13,7 @@
     ],
 
 
-    "outputFileName": "wwwroot/css/main.css"
+    "outputFileName": "wwwroot/css/main.min.css"
   },
   {
     "inputFiles": [
@@ -25,6 +25,6 @@
       "wwwroot/js/site.js",
       "wwwroot/js/custom.js"
     ],
-    "outputFileName": "wwwroot/js/main.js"
+    "outputFileName": "wwwroot/js/main.min.js"
   }
 ]

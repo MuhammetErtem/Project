@@ -16,6 +16,6 @@ namespace Project.DAL.Entities
         [Column(TypeName ="varchar(30)"),Display(Name = "Şehir Adı"),StringLength(30),Required(ErrorMessage ="Şehir Boş Geçilemez...")]
         public string Name { get; set; }
 
-        public ICollection<Distinct> Distincts { get; set; }
+        public ICollection<District> Districts { get; set; }
     }
 }

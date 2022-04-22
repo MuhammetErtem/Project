@@ -12,7 +12,7 @@ namespace Project.DAL.DbContexts
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder) //Modellerin birbirine bağlandığı yer.
         {
-            modelBuilder.Entity<Distinct>().HasOne(ho => ho.City).WithMany(wm => wm.Distincts).OnDelete(DeleteBehavior.SetNull);
+            modelBuilder.Entity<District>().HasOne(ho => ho.City).WithMany(wm => wm.Districts).OnDelete(DeleteBehavior.SetNull);
             modelBuilder.Entity<Order>().HasIndex(hi => hi.OrderNumber).IsUnique(true);
             modelBuilder.Entity<Product>().HasOne(ho => ho.Brand).WithMany(wm => wm.Products).HasForeignKey(b=>b.BrandID).OnDelete(DeleteBehavior.SetNull);
             modelBuilder.Entity<Comment>().HasOne(ho => ho.Blog).WithMany(wm => wm.Comments).HasForeignKey(b=>b.BlogID).OnDelete(DeleteBehavior.SetNull);
@@ -36,7 +36,7 @@ namespace Project.DAL.DbContexts
         public DbSet<Order> Order { get; set; }
         public DbSet<OrderDetail> OrderDetail { get; set; }
         public DbSet<City> City { get; set; }
-        public DbSet<Distinct> Distinct { get; set; }
+        public DbSet<District> District { get; set; }
         public DbSet<PriceCargo> PriceCargo { get; set; }
 
 

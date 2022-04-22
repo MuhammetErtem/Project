@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace Project.DAL.Entities
 {
-    [Table("Distinct")]
-    public class Distinct
+    [Table("District")]
+    public class District
     {
         public int ID { get; set; }
 
