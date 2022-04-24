@@ -29,9 +29,9 @@ namespace Project.WebUI.Controllers
         {
             IndexVM indexVM = new IndexVM
             {
-                Slider = repoSlider.GetAll(),
+                Slider = repoSlider.GetAll().OrderBy(o => o.DisplayIndex).Where(o => o.Enabled),
                 LatestProducts = repoProduct.GetAll().Include(i => i.ProductPictures).OrderByDescending(o => o.ID).Where(o => o.Enabled).Take(8),
-                BestSellerProducts = repoProduct.GetAll().Include(i => i.ProductPictures).OrderBy(o => Guid.NewGuid()).Where(o => o.Enabled).Take(1),
+                BestSellerProducts = repoProduct.GetAll().Include(i => i.ProductPictures).OrderByDescending(o => o.Stock < 10 ).Where(o => o.Enabled).Take(1),
                 Blogs = repoBlog.GetAll().OrderByDescending(o => o.ID).Where(o => o.Enabled).Take(3),
                 AnimalPictures = repoAnimalPicture.GetAll().OrderBy(o => Guid.NewGuid()).Take(6),
             };

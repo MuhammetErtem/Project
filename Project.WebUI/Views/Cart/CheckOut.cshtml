@@ -68,7 +68,7 @@
                         <div class="checkout__input__checkbox">
                             <label>
                                 Faturam Teslimat Adresime Gönderilsin
-                                <input asp-for="@Model.Order.DeliveryBilingSimilar" onchange="deliveryNotBiling(this)" id="fatura" type="checkbox" checked="checked" >
+                                <input asp-for="@Model.Order.DeliveryBilingSimilar" onchange="deliveryNotBiling(this)" id="fatura" type="checkbox" checked="checked">
                                 <span class="checkmark"></span>
                             </label>
                         </div>
@@ -89,9 +89,16 @@
                                 <p>Semt<span>*</span></p>
                                 <select class="selectDeliveryDistinct"></select>
                             </div>
+
                         </div>
 
+                        <div class="checkout__input">
+                            <p>Ödeme Türü Seçiniz<span>*</span></p>
+                            <select asp-for="@Model.Order.Payment" asp-items="@Html.GetEnumSelectList<EPayment>()"></select>
+                        </div>
                     </div>
+
+
                     <div class="col-lg-4 col-md-6">
                         <div class="checkout__order">
                             <h4 class="order__title">Sepetim</h4>

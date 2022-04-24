@@ -1,20 +1,12 @@
 ﻿@model IndexVM
     <!-- Hero Section Begin -->
 <section class="hero">
-    <div class="container">
-        <div class="hero__slider owl-carousel">
+    <div class="container-fluid">
+        <div class="hero__slider owl-carousel" id="slider">
             @foreach (Slider s in Model.Slider)
             {
-                <a href="#">
-                    <div class="hero__items set-bg" style="width:1140px; height: 377px; max-height: 377px; overflow: hidden;" data-setbg="@s.Picture">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-xl-5 col-lg-7 col-md-8">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
+                <div class="hero__items set-bg" style="width:1280px; height: 500px; max-height: 500px; overflow: hidden;" data-setbg="@s.Picture">
+                </div>
             }
         </div>
     </div>
@@ -84,29 +76,40 @@
     <div class="container">
         @foreach (Product p in Model.BestSellerProducts)
         {
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="categories__text">
-                        <h2>@*Clothings Hot*@ <br /> <span>@*Shoe Collection*@</span> <br /> @*Accessories*@</h2>
+            if (p.Stock < 10)
+            {
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="categories__text">
+                            <h2>Tükenmeden <br /> <span>Alın</span> <br /> @*Accessories*@</h2>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="categories__hot__deal">
-                        <img src="@p.ProductPictures.FirstOrDefault().Path" alt="">
-                        <div class="hot__deal__sticker"  style="background-color: #883fab">
-                            <span>İndirim</span>
-                            <h5>@p.Price ₺</h5>
+                    <div class="col-lg-4">
+                        <div class="categories__hot__deal">
+                            <img src="@p.ProductPictures.FirstOrDefault().Path" alt="">
+                            <div class="hot__deal__sticker" style="background-color: #36a300">
+                                <span>İndirim</span>
+                                <h5>@p.Price ₺</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 offset-lg-1">
+                        <div class="categories__deal__countdown">
+                            <span>Çok Satan Ürünler</span>
+                            <h2>@p.Name</h2>
+                            @if (p.Stock > 0)
+                            {
+                                <a asp-controller="Product" asp-action="Detail" asp-route-name="@GeneralTool.ConvertURL(p.Name)" asp-route-id="@p.ID" class="primary-btn" style="background-color: #883fab">Satın Al</a>
+                            }
+                            else
+                            {
+                                <a class="primary-btn">Tükendi</a>
+                            }
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 offset-lg-1">
-                    <div class="categories__deal__countdown">
-                        <span>Haftanın Ürünleri</span>
-                        <h2>@p.Name</h2>
-                        <a asp-controller="Product" asp-action="Detail" asp-route-name="@GeneralTool.ConvertURL(p.Name)" asp-route-id="@p.ID" class="primary-btn">Satın Al</a>
-                    </div>
-                </div>
-            </div>
+            }
+
         }
     </div>
 </section>
@@ -119,13 +122,13 @@
                 <div class="instagram__pic">
                     @foreach (AnimalPicture a in Model.AnimalPictures)
                     {
-                    <div class="instagram__pic__item set-bg" data-setbg="@a.Picture"></div>
+                        <div class="instagram__pic__item set-bg" data-setbg="@a.Picture"></div>
                     }
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="instagram__text">
-                    <h2  style="color: #883fab ">Sahiplen</h2>
+                    <h2 style="color: #883fab ">Sahiplen</h2>
                     <p>
                         Ücretsiz sahiplenebileceğiniz evcil hayvanlarımızı gördünüz mü?
                     </p>

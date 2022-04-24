@@ -12,6 +12,7 @@ namespace Project.WebUI.ViewModels
         public ProductPicture ProductPicture { get; set; }
         public Category Category { get; set; }
         public IEnumerable<Category> CategoryList { get; set; }
+        public IEnumerable<Brand> BrandList { get; set; }
         public Brand Brand { get; set; }
 
     }
