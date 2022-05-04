@@ -29,7 +29,6 @@
                     <nav class="header__menu mobile-menu">
                         @*<ul>
 
-                                <li><a href="./shop.html">Shop</a></li>
                                 <li>
                                     <a href="#">Pages</a>
                                     <ul class="dropdown">
@@ -40,22 +39,22 @@
                                         <li><a href="./blog-details.html">Blog Details</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="./blog.html">Blog</a></li>
+                               
                             </ul>*@
                         <ul>
                             @foreach (Category c in Model.Categories)
                             {
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                                <li >
+                                    <a href="#">
                                         @c.Name
                                     </a>
 
-                                    @*<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        @foreach (SubCategory s in Model.SubCategories)
+                                    <div class="dropdown">
+                                        @foreach (var s in c.SubCategories)
                                         {
-                                            <a class="dropdown-item" asp-route="SubCategory" asp-route-name="@GeneralTool.ConvertURL(s.Name)" asp-route-id="@s.ID">@s.Name</a>
+                                            <a class="dropdown-item" style="font-size: 14px; background-color: #212529; color: #fff; font-weight: 400; padding: 5px 20px; text-transform: capitalize; text-decoration: none; background-color: transparent; white-space: pre-wrap; " asp-route="SubCategory" asp-route-name="@GeneralTool.ConvertURL(s.Name)" asp-route-id="@s.ID">@s.Name</a>
                                         }
-                                    </div>*@
+                                    </div>
                                 </li>
                             }
                         </ul>
@@ -64,10 +63,11 @@
                 <div class="col">
                     <div class="header__nav__option">
                         <a href="#" class="search-switch"><img src="/img/icon/search.png" alt=""></a>
-                        <a href="#"><img src="/img/icon/heart.png" alt=""></a>
+                        <a class="dropdown-menu"><img src="/img/icon/user1.png" alt=""></a>
                         <a asp-controller="Cart" asp-action="Index"><img src="/img/icon/cart.png" alt=""> <span>0</span></a>
                         <div class="price">0.00 ₺</div>
                     </div>
+
                 </div>
             </div>
             <div class="canvas__open"><i class="fa fa-bars"></i></div>

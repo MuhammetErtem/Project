@@ -14,13 +14,16 @@
 
   <ItemGroup>
     <None Include="bundleconfig.json" />
+    <None Include="Views\Shared\Components\UserBar\Default.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Grpc.Core" Version="2.45.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.15">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="NETCore.MailKit" Version="2.0.3" />
   </ItemGroup>
 
   <ItemGroup>

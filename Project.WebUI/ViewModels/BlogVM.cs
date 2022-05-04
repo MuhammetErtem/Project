@@ -1,5 +1,4 @@
 ﻿using Project.DAL.Entities;
-using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 
 namespace Project.WebUI.ViewModels
@@ -11,7 +10,5 @@ namespace Project.WebUI.ViewModels
         public IEnumerable<Blog> Blogs { get; set; }
         public IEnumerable<Blog> ListBlog { get; set; }
         public IEnumerable<Comment> PostComment { get; set; }
-
-
     }
 }

@@ -12,13 +12,13 @@ namespace Project.DAL.Entities
     public class Comment
     {
         public int ID { get; set; }
-        [Column(TypeName = "varchar(50)"), Display(Name = "Adı Soyadı"), StringLength(50)]
+        [Column(TypeName = "varchar(50)"), Display(Name = "Adı Soyadı"), StringLength(50),Required(ErrorMessage = "Adı Soyadı Alanı Boş Geçilemez...")]
         public string NameSurname { get; set; }
 
-        [Column(TypeName = "varchar(80)"), Display(Name = "Mail Adresi"), StringLength(80)]
+        [Column(TypeName = "varchar(80)"), Display(Name = "Mail Adresi"), StringLength(80), Required(ErrorMessage = "Mail Adresi Alanı Boş Geçilemez...")]
         public string MailAddress { get; set; }
 
-        [Column(TypeName = "varchar(250)"), Display(Name = "Yorum"), StringLength(250)]
+        [Column(TypeName = "varchar(250)"), Display(Name = "Yorum"), StringLength(250), Required(ErrorMessage = "Yorum Alanı Boş Geçilemez...")]
         public string Commentary { get; set; }
 
         [Display(Name = "Kayıt Tarihi")]

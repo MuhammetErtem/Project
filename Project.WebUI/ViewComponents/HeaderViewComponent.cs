@@ -3,10 +3,11 @@ using Project.DAL.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Project.WebUI.ViewModels;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace Project.WebUI.ViewComponents
 {
-    public class HeaderViewComponent: ViewComponent
+    public class HeaderViewComponent : ViewComponent
     {
         SqlRepo<Category> repoCategory;
         SqlRepo<SubCategory> repoSubCategory;
@@ -15,11 +16,13 @@ namespace Project.WebUI.ViewComponents
             repoCategory = _repoCategory;
             repoSubCategory = _repoSubCategory;
         }
-        public IViewComponentResult Invoke()
+        public IViewComponentResult Invoke(int id)
         {
             HeaderVM headerVM = new HeaderVM
             {
-                Categories = repoCategory.GetAll().Include(i => i.SubCategories)
+                Categories = repoCategory.GetAll().Include(i => i.SubCategories).ToList(),
+                SubCategories = repoSubCategory.GetAll().Include(i => i.Products)
+
             };
             return View(headerVM);
         }

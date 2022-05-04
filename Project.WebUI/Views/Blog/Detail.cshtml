@@ -7,9 +7,9 @@
                 <div class="blog__hero__text">
                     <h2>@Model.Blog.Title</h2>
                     <ul>
-                        <li>By Deercreative</li>
+                        <li></li>
                         <li>@Model.Blog.RecDate.ToShortDateString()</li>
-                        <li>8 Yorum</li>
+                        <li></li>
                     </ul>
                 </div>
             </div>
@@ -71,37 +71,24 @@
                             </div>
                         </div>
                     </div>
-                    <div class="blog__details__btns">
-                        @foreach (Comment c in Model.PostComment)
-                        {
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <a href="" class="blog__details__btns__item">
-                                        <p>
-                                            <div class="blog__details__author">
-                                                <div class="blog__details__author__pic">
-                                                    <img src="/img/blog/CommentLogo.png" alt="">
-                                                </div>
-                                                <div class="blog__details__author__text">
-                                                    <h5>@c.NameSurname</h5>
-                                                </div>
-                                            </div>
-                                        </p>
-                                        <h5>@c.Commentary</h5>
-                                    </a>
-                                </div>
-                            </div>
-                        }
-                    </div>
+                    @foreach (Comment c in Model.PostComment)
+                    {
+        <partial name="_CommentBoxPartial" model="@c"></partial>}
                     <div class="blog__details__comment">
                         <h4>Yorum Yap</h4>
                         <form class="contact__form" asp-controller="Blog" asp-action="Detail">
                             <div class="row">
+                                <div class="col-lg-6 col-md-6" style=" display: none;">
+                                    <input asp-for="@Model.Comment.BlogID" value="@ViewBag.deger">
+                                </div>
                                 <div class="col-lg-6 col-md-6">
                                     <input asp-for="@Model.Comment.NameSurname" placeholder="Adı Soyadı">
                                 </div>
                                 <div class="col-lg-6 col-md-6">
                                     <input asp-for="@Model.Comment.MailAddress" placeholder="E-mail">
+                                </div>
+                                <div class="col-lg-12 col-md-12">
+                                    <input asp-for="@Model.Comment.RecDate" value="@DateTime.Now">
                                 </div>
                                 <div class="col-lg-12 text-center">
                                     <textarea asp-for="@Model.Comment.Commentary" placeholder="Yorum"></textarea>

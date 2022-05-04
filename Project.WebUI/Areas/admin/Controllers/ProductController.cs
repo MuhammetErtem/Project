@@ -13,25 +13,28 @@ namespace Project.WebUI.Areas.admin.Controllers
     public class ProductController : Controller
     {
         SqlRepo<Product> repoProduct;
+        SqlRepo<ProductPicture> repoProductPicture;
         SqlRepo<Brand> repoBrand;
         SqlRepo<SubCategory> repoSubCategory;
-        public ProductController(SqlRepo<Product> _repoProduct, SqlRepo<Brand> _repoBrand, SqlRepo<SubCategory> _repoSubCategory)
+        public ProductController(SqlRepo<Product> _repoProduct, SqlRepo<Brand> _repoBrand, SqlRepo<SubCategory> _repoSubCategory, SqlRepo<ProductPicture> _repoProductPicture)
         {
             repoProduct = _repoProduct;
             repoSubCategory = _repoSubCategory;
             repoBrand = _repoBrand;
+            repoProductPicture = _repoProductPicture;
         }
 
         public IActionResult Index()
         {
-            return View(repoProduct.GetAll().Include(p => p.Brand).ToList().OrderByDescending(o=>o.ID));
+            return View(repoProduct.GetAll().Include(p => p.Brand).ToList().OrderByDescending(o => o.ID));
         }
 
         public IActionResult Create()
         {
             ProductVM productVM = new ProductVM
             {
-                Product = new Product { Enabled = true },
+                Product = new Product{ Enabled = true },
+                ProductPicture = new ProductPicture(),
                 Brands = repoBrand.GetAll(),
                 SubCategories = repoSubCategory.GetAll()
             };
@@ -41,22 +44,19 @@ namespace Project.WebUI.Areas.admin.Controllers
         [HttpPost]
         public IActionResult Create(ProductVM model)
         {
-            if (ModelState.IsValid)
-            {
+                var dosyaYolu = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "product");
                 if (Request.Form.Files.Any())
                 {
-                    string productPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "product");
+                    string productPath = dosyaYolu;
                     if (!Directory.Exists(productPath)) Directory.CreateDirectory(productPath);
-                    using (var stream = new FileStream(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "product", Request.Form.Files["Picture"].FileName), FileMode.Create))
+                    using (var dosyaAkisi = new FileStream(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "product", Request.Form.Files["ProductPicture.Path"].FileName), FileMode.Create))
                     {
-                        Request.Form.Files["Picture"].CopyTo(stream);
+                        Request.Form.Files["ProductPicture.Path"].CopyTo(dosyaAkisi);
                     }
-                    model.ProductPicture.Path = "/img/product/" + Request.Form.Files["Picture"].FileName;
+                    model.ProductPicture.Path = "/img/product/" + Request.Form.Files["ProductPicture.Path"].FileName;
                 }
-
                 repoProduct.Add(model.Product);
 
-            }
             return RedirectToAction("Index");
         }
 

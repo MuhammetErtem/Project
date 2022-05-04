@@ -1,0 +1,143 @@
+﻿@model SubCategory
+@{
+ if (Model.Products.Any())
+    {
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb__text">
+                    <h4>
+                        <b>@Model.Name</b> ile ilgili @Model.Products.Count().ToString("n0") adet sonuç bulundu.
+                    </h4>
+                    <div class="breadcrumb__links">
+                        <a href="/">Ana Sayfa</a>
+                        <span>İlgili Ürünler</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+<!-- Shop Section Begin -->
+<section class="shop spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="shop__sidebar">
+                    <div class="shop__sidebar__search">
+                        <form action="#">
+                            <input type="text" placeholder="Search...">
+                            <button type="submit"><span class="icon_search"></span></button>
+                        </form>
+                    </div>
+                    <div class="shop__sidebar__accordion">
+                        <div class="accordion" id="accordionExample">
+                            <div class="card">
+                                <div class="card-heading">
+                                    <a data-toggle="collapse" data-target="#collapseOne">Kategori</a>
+                                </div>
+                                <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="shop__sidebar__categories">
+                                            <ul class="nice-scroll">
+                                                @foreach (var b in Model.Category.SubCategories)
+                                                {
+                                    <li><a href="#">@b.Name</a></li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-heading">
+                                    <a data-toggle="collapse" data-target="#collapseTwo">Marka</a>
+                                </div>
+                                <div id="collapseTwo" class="collapse show" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="shop__sidebar__brand">
+                                            <ul>
+                                                @foreach (var b in Model.Category.SubCategories)
+                                                {
+                                    <li><a href="#">@b.Name.ToString()</a></li>}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-heading">
+                                    <a data-toggle="collapse" data-target="#collapseThree">Fiyat</a>
+                                </div>
+                                <div id="collapseThree" class="collapse show" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="shop__sidebar__price">
+                                            <ul>
+                                                <li><a href="#">0₺ - 100₺</a></li>
+                                                <li><a href="#">100₺ - 250₺</a></li>
+                                                <li><a href="#">250₺ - 500₺</a></li>
+                                                <li><a href="#">500₺+</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="shop__product__option">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="shop__product__option__left">
+                                <p>@Model.Products.Count().ToString("n0") sonuçtan 1–@Model.Products.Count().ToString("n0") arası gösteriliyor</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="shop__product__option__right">
+                                <p>Sıralama Seçiniz</p>
+                                <select>
+                                    <option value="">En Düşük Fiyat</option>
+                                    <option value="">En Yüksek Fiyat</option>
+                                    <option value="">Yeni Gelenler</option>
+                                    <option value="">Çok Satanlar</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    @foreach (Product p in Model.Products)
+                    {<partial name="_ProductBoxPartial" model="@p"></partial>}
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="product__pagination">
+                            <a class="active" href="#">1</a>
+                            <a href="#">2</a>
+                            <a href="#">3</a>
+                            <span>...</span>
+                            <a href="#">61</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Shop Section End -->
+    }
+    else
+    {
+        <div class="p-5 d-flex flex-column align-items-center">
+        <i class="fa fa-frown fa-5x"></i>
+        <h4>Üzgünüz...</h4>
+        <p>Arama kriterlerinize uygun ürün bulunamadı!</p>
+    </div>
+    }
+
+}

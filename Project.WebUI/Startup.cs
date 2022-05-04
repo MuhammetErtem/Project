@@ -58,8 +58,10 @@ namespace Project.WebUI
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(name: "areas", pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
+                endpoints.MapControllerRoute(name: "subcategory",pattern: "{name}-s-{id}.html",defaults: new { controller = "Home", action = "SubCategory" });
+
+                endpoints.MapControllerRoute(name: "areas", pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute(name: "default", pattern: "{controller=home}/{action=index}/{id?}");
             });
         }

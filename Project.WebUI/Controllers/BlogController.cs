@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Project.WebUI.Controllers
 {
@@ -31,11 +33,14 @@ namespace Project.WebUI.Controllers
         public IActionResult Detail(BlogVM model, int id)
         {
             Blog blog = repoBlog.GetAll().Where(p => p.ID == id && p.Enabled).FirstOrDefault(x => x.ID == id) ?? null;
+            ViewBag.deger = id;
+            ViewBag.saat = DateTime.Now;
+
             if (model.Comment != null)
             {
                 repoComment.Add(model.Comment);
                 string[] mailto = new string[] { model.Comment.MailAddress };
-                
+
             }
             else
             {
@@ -44,7 +49,7 @@ namespace Project.WebUI.Controllers
                     BlogVM blogVM = new BlogVM
                     {
 
-                        PostComment = repoComment.GetAll().OrderByDescending(p => p.ID),
+                        PostComment = repoComment.GetAll().Where(p => p.BlogID == id).ToList(),
                         Blog = blog,
                     };
                     return View(blogVM);

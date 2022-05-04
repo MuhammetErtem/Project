@@ -20,6 +20,7 @@ namespace Project.DAL.Entities
         public int? CategoryID { get; set; }
 
         public Category Category { get; set; }
+
         public ICollection<Product> Products { get; set; }
 
         [Display(Name = "Etkin")]
