@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.IO;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using X.PagedList;
 
 namespace Project.WebUI.Areas.admin.Controllers
 {
@@ -24,9 +25,9 @@ namespace Project.WebUI.Areas.admin.Controllers
             repoProductPicture = _repoProductPicture;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int? page)
         {
-            return View(repoProduct.GetAll().Include(p => p.Brand).ToList().OrderByDescending(o => o.ID));
+            return View(repoProduct.GetAll().Include(p => p.Brand).ToPagedList(page ?? 1, 10));
         }
 
         public IActionResult Create()

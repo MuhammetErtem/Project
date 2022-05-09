@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.IO;
 using System.Linq;
+using X.PagedList;
 
 namespace Project.WebUI.Areas.admin.Controllers
 {
@@ -19,9 +20,9 @@ namespace Project.WebUI.Areas.admin.Controllers
             repoAnimalPicture = _repoAnimalPicture;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int? page)
         {
-            return View(repoAnimal.GetAll().OrderByDescending(o => o.ID));
+            return View(repoAnimal.GetAll().ToPagedList(page ?? 1, 10));
         }
 
         public IActionResult Create()

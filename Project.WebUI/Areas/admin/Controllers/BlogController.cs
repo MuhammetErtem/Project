@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using System;
+using X.PagedList;
 
 namespace Project.WebUI.Areas.admin.Controllers
 {
@@ -20,9 +21,9 @@ namespace Project.WebUI.Areas.admin.Controllers
             repoBlog = _repoBlog;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int? page)
         {
-            return View(repoBlog.GetAll().ToList().OrderByDescending(o => o.ID));
+            return View(repoBlog.GetAll().ToPagedList(page ?? 1, 10));
         }
 
         public IActionResult Create()

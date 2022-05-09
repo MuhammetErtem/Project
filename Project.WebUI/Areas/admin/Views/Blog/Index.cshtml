@@ -33,30 +33,31 @@
                                 <tbody>
                                     @foreach (Blog b in Model)
                                     {
-                                    <tr class="@(i%2==0?"even":"odd") pointer">
-                                        <td class="py-1" style="vertical-align:middle"><a>@b.Title</a></td>
-                                        <td class="py-1" style="vertical-align:middle"><a>@b.RecDate.ToShortDateString()</a></td>
-                                        <td>
-                                            @if (b.Enabled)
-                                            {
-                                                <span class="text-primary">
-                                                    <i class="mdi mdi-playlist-check"></i>
-                                                </span>
-                                            }
-                                            else
-                                            {
-                                                <span class="text-danger">
-                                                    <i class="mdi mdi-playlist-remove"></i>
-                                                </span>
-                                            }
-                                        </td>
-                                        <th><a asp-action="Update" asp-route-id="@b.ID" class="btn btn-round btn-success float-right">Düzenle</a></th>
-                                        <th><button onclick="deleteRecord('@b.Title','blog',@b.ID)" class="btn btn-round btn-danger float-right">Sil</button></th>
-                                    </tr>
+                                        <tr class="@(i%2==0?"even":"odd") pointer">
+                                            <td class="py-1" style="vertical-align:middle"><a>@b.Title</a></td>
+                                            <td class="py-1" style="vertical-align:middle"><a>@b.RecDate.ToShortDateString()</a></td>
+                                            <td>
+                                                @if (b.Enabled)
+                                                {
+                                                    <span class="text-primary">
+                                                        <i class="mdi mdi-playlist-check"></i>
+                                                    </span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="text-danger">
+                                                        <i class="mdi mdi-playlist-remove"></i>
+                                                    </span>
+                                                }
+                                            </td>
+                                            <th><a asp-action="Update" asp-route-id="@b.ID" class="btn btn-round btn-success float-right">Düzenle</a></th>
+                                            <th><button onclick="deleteRecord('@b.Title','blog',@b.ID)" class="btn btn-round btn-danger float-right">Sil</button></th>
+                                        </tr>
                                         i++;
                                     }
                                 </tbody>
                             </table>
+                            @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }), Extensions.PagedListRenderOptions)
                         </div>
                     </div>
                 </div>

@@ -2,6 +2,7 @@
 using Project.DAL.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using X.PagedList;
 
 namespace Project.WebUI.Areas.admin.Controllers
 {
@@ -14,9 +15,9 @@ namespace Project.WebUI.Areas.admin.Controllers
             repoCategory = _repoCategory;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int? page)
         {
-            return View(repoCategory.GetAll());
+            return View(repoCategory.GetAll().ToPagedList(page ?? 1, 10));
         }
 
         public IActionResult Create()

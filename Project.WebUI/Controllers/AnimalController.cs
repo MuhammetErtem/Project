@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
+using X.PagedList;
 
 namespace Project.WebUI.Controllers
 {
@@ -15,11 +16,11 @@ namespace Project.WebUI.Controllers
         {
             repoAnimal = _repoAnimal;
         }
-        public IActionResult Index(int id)
+        public IActionResult Index(int? page)
         {
             AnimalVM animalVM = new AnimalVM
             {
-                ListAnimal = repoAnimal.GetAll().Include(i => i.AnimalPictures).OrderByDescending(o => o.ID).Where(p => p.Enabled).Take(16),
+                ListAnimal = repoAnimal.GetAll().Include(i => i.AnimalPictures).OrderByDescending(o => o.ID).Where(p => p.Enabled).ToPagedList(page ?? 1, 16),
                 
             };
             return View(animalVM);

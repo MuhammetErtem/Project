@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using Project.WebUI.Areas.admin.ViewModels;
+using X.PagedList;
 
 namespace Project.WebUI.Areas.admin.Controllers
 {
@@ -22,9 +23,9 @@ namespace Project.WebUI.Areas.admin.Controllers
             repoCategory = _repoCategory;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int? page)
         {
-            return View(repoSubCategory.GetAll().Include(p => p.Category).ToList().OrderByDescending(o => o.ID));
+            return View(repoSubCategory.GetAll().Include(p => p.Category).ToPagedList(page ?? 1, 10));
         }
 
         public IActionResult Create()

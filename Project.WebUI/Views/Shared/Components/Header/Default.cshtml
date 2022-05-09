@@ -7,17 +7,6 @@
     </div>
     <!-- Header Section Begin -->
     <header class="header">
-        <div class="header__top" style="color: #ffffff; background-color: #212529">
-            <div class="container">
-                <div class="col-6 col-md-6">
-                    <div class="col-md-auto">
-                        <div class="header__top__left">
-                            <p>Ücretsiz Kargo, 30 Gün İade Garantisi</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -29,22 +18,22 @@
                     <nav class="header__menu mobile-menu">
                         @*<ul>
 
-                                <li>
-                                    <a href="#">Pages</a>
-                                    <ul class="dropdown">
-                                        <li><a href="./about.html">About Us</a></li>
-                                        <li><a href="./shop-details.html">Shop Details</a></li>
-                                        <li><a href="./shopping-cart.html">Shopping Cart</a></li>
-                                        <li><a asp-controller="Contact" asp-action="Index">Check Out</a></li>
-                                        <li><a href="./blog-details.html">Blog Details</a></li>
-                                    </ul>
-                                </li>
-                               
-                            </ul>*@
+                    <li>
+                        <a href="#">Pages</a>
+                        <ul class="dropdown">
+                            <li><a href="./about.html">About Us</a></li>
+                            <li><a href="./shop-details.html">Shop Details</a></li>
+                            <li><a href="./shopping-cart.html">Shopping Cart</a></li>
+                            <li><a asp-controller="Contact" asp-action="Index">Check Out</a></li>
+                            <li><a href="./blog-details.html">Blog Details</a></li>
+                        </ul>
+                    </li>
+
+                </ul>*@
                         <ul>
                             @foreach (Category c in Model.Categories)
                             {
-                                <li >
+                                <li>
                                     <a href="#">
                                         @c.Name
                                     </a>
@@ -63,7 +52,7 @@
                 <div class="col">
                     <div class="header__nav__option">
                         <a href="#" class="search-switch"><img src="/img/icon/search.png" alt=""></a>
-                        <a class="dropdown-menu"><img src="/img/icon/user1.png" alt=""></a>
+                        <a class="kullanici"><img src="/img/icon/user1.png" alt=""></a>
                         <a asp-controller="Cart" asp-action="Index"><img src="/img/icon/cart.png" alt=""> <span>0</span></a>
                         <div class="price">0.00 ₺</div>
                     </div>

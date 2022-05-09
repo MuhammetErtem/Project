@@ -100,7 +100,7 @@ namespace Project.WebUI.Controllers
 
                 await emailService.SendAsync(
                         model.Email,
-                        "Sahiplendir E-Posta Doğrulama Mesajı",
+                        "PetShop E-Posta Doğrulama Mesajı",
                         htmlBody,
                         isHtml: true);
 
