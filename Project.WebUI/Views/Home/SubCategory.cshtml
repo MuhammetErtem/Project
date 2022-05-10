@@ -29,7 +29,7 @@
                 <div class="shop__sidebar">
                     <div class="shop__sidebar__search">
                         <form action="#">
-                            <input type="text" placeholder="Search...">
+                            <input type="text" placeholder="Arama...">
                             <button type="submit"><span class="icon_search"></span></button>
                         </form>
                     </div>
@@ -43,10 +43,15 @@
                                     <div class="card-body">
                                         <div class="shop__sidebar__categories">
                                             <ul class="nice-scroll">
-                                                @foreach (var b in Model.Category.SubCategories)
+                                                @*@foreach (var b in Model.Category.SubCategories)
                                                 {
-                                    <li><a href="#">@b.Name</a></li>
-                                                }
+                                            <li><a href="#">@b.Name</a></li>}*@
+                                                <li><a href="#">Kedi</a></li>
+                                                <li><a href="#">Köpek</a></li>
+                                                <li><a href="#">Kuş</a></li>
+                                                <li><a href="#">Kemirgen</a></li>
+                                                <li><a href="#">Sürüngen</a></li>
+                                                <li><a href="#">Akvaryum</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -60,9 +65,19 @@
                                     <div class="card-body">
                                         <div class="shop__sidebar__brand">
                                             <ul>
-                                                @foreach (var b in Model.Category.SubCategories)
-                                                {
-                                    <li><a href="#">@b.Name.ToString()</a></li>}
+                                                @*@foreach (var b in Model.Category.SubCategories)
+                                                    {<li><a href="#">@b.Name.ToString()</a></li>}*@
+                                                <li><a href="#">Felix</a></li>
+                                                <li><a href="#">Whiskas</a></li>
+                                                <li><a href="#">Royal Canin</a></li>
+                                                <li><a href="#">Dogido</a></li>
+                                                <li><a href="#">Garden Mix</a></li>
+                                                <li><a href="#">Jungle</a></li>
+                                                <li><a href="#">Quik</a></li>
+                                                <li><a href="#">Mera</a></li>
+                                                <li><a href="#">Friskies</a></li>
+                                                <li><a href="#">Bado</a></li>
+                                                <li><a href="#">Goody</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -114,7 +129,13 @@
                     @foreach (Product p in Model.Products)
                     {<partial name="_ProductBoxPartial" model="@p"></partial>}
                 </div>
-                @Html.PagedListPager((IPagedList)Model.Products, page => Url.Action("Index", new { page }), HomeExtensions.PagedListRenderOptions)
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="product__pagination">
+                            <a class="active" href="#">1</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

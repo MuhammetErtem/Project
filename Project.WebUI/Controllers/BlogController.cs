@@ -7,6 +7,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using X.PagedList;
 
 namespace Project.WebUI.Controllers
 {
@@ -19,11 +20,11 @@ namespace Project.WebUI.Controllers
             repoBlog = _repoBlog;
             repoComment = _repoComment;
         }
-        public IActionResult Index()
+        public IActionResult Index(int? page)
         {
             BlogVM blogVM = new BlogVM
             {
-                ListBlog = repoBlog.GetAll().OrderByDescending(o => o.ID).Take(16),
+                ListBlog = repoBlog.GetAll().OrderByDescending(o => o.ID).ToPagedList(page ?? 1, 16),
             };
             return View(blogVM);
 

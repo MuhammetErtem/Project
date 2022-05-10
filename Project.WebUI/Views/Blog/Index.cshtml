@@ -16,9 +16,9 @@
         <div class="row">
             @foreach (Blog b in Model.ListBlog)
             {
-                <partial name="_BlogBoxPartial" model="@b"></partial>
-            }
+    <partial name="_BlogBoxPartial" model="@b"></partial>            }
         </div>
+        @Html.PagedListPager((IPagedList)Model.ListBlog, page => Url.Action("Index", new { page }), HomeExtensions.PagedListRenderOptions)
     </div>
 </section>
 <!-- Blog Section End -->
