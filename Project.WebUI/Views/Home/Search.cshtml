@@ -114,17 +114,7 @@
                     @foreach (Product p in Model)
                     {<partial name="_ProductBoxPartial" model="@p"></partial>}
                 </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="product__pagination">
-                            <a class="active" href="#">1</a>
-                            <a href="#">2</a>
-                            <a href="#">3</a>
-                            <span>...</span>
-                            <a href="#">21</a>
-                        </div>
-                    </div>
-                </div>
+                @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }), HomeExtensions.PagedListRenderOptions)
             </div>
         </div>
     </div>

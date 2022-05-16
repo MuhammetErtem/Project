@@ -51,8 +51,10 @@ namespace Project.WebUI.Areas.admin.Controllers
 
                 model.RecDate = DateTime.Now;
 
+                return RedirectToAction("Index");
+
             }
-            return RedirectToAction("Index");
+            return View();
         }
 
         public IActionResult Update(int id)

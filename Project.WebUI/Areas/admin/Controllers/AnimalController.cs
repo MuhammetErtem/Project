@@ -48,8 +48,10 @@ namespace Project.WebUI.Areas.admin.Controllers
 
                 repoAnimal.Add(model.Animal);
                 model.AnimalPicture.AnimalID = model.Animal.ID.GetHashCode();
+                return RedirectToAction("Index");
+
             }
-            return RedirectToAction("Index");
+            return View();
         }
 
         public IActionResult Update(int id)

@@ -45,12 +45,15 @@ namespace Project.WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-
-            var result = await signInManager.PasswordSignInAsync(model.EMail, model.Password, model.IsPersistent, true);
-            if (result.Succeeded)
-                return Redirect(model.ReturnUrl ?? "/");
-            ModelState.AddModelError("", "Geçersiz kullanıcı girişi");
+            if (ModelState.IsValid)
+            {
+                var result = await signInManager.PasswordSignInAsync(model.EMail, model.Password, model.IsPersistent, true);
+                if (result.Succeeded)
+                    return Redirect(model.ReturnUrl ?? "/");
+                ModelState.AddModelError("", "Geçersiz kullanıcı girişi");
+            }
             return View();
+
         }
 
         public async Task<IActionResult> Logout()

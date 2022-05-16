@@ -18,11 +18,12 @@
                             <h4 class="card-title"><a asp-action="Cancel" class="btn btn-round btn-danger float-right" style="color:#fff">İptal</a></h4>
                             <p class="card-description">
                             </p>
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             <div class="item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Title">
-                                </label>
+                                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "col-form-label col-md-3 col-sm-3 label-align" })
                                 <div class="col-md-6 col-sm-6 ">
-                                    <input asp-for="@Model.Title" class="form-control "><span style="color:red" asp-validation-for="@Model.Title"></span>
+                                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                             <div class="item form-group">
@@ -33,24 +34,24 @@
                                 </div>
                             </div>
                             <div class="item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Description">
-                                </label>
+                                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "col-form-label col-md-3 col-sm-3 label-align" })
                                 <div class="col-md-6 col-sm-6 ">
-                                    <input asp-for="@Model.Description" class="form-control ">
+                                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                             <div class="item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Detail">
-                                </label>
+                                @Html.LabelFor(model => model.Detail, htmlAttributes: new { @class = "col-form-label col-md-3 col-sm-3 label-align" })
                                 <div class="col-md-6 col-sm-6 ">
-                                    <textarea asp-for="@Model.Detail" class="editor" rows="10" cols="80"></textarea>
+                                    @Html.EditorFor(model => model.Detail, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Detail, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-                            <div class="item form-group" id="datetimepicker6">
+                            <div class="item form-group" id="datetimepicker6"style=" display: none;">
                                 <label class="col-form-label col-md-3 col-sm-3 label-align" id="datetimepicker6" for="first-name" asp-for="@Model.RecDate">
                                 </label>
                                 <div class="col-md-6 col-sm-6 ">
-                                    <input asp-for="@Model.RecDate" id="datetimepicker6" class="datetimepicker6" type="text">
+                                    <input asp-for="@Model.RecDate" value="@DateTime.Now" id="datetimepicker6" class="datetimepicker6" type="text">
                                 </div>
                             </div>
                             <div class="row">

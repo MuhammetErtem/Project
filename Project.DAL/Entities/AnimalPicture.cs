@@ -12,7 +12,7 @@ namespace Project.DAL.Entities
     public class AnimalPicture
     {
         public int ID { get; set; }
-        [Column(TypeName = "varchar(150)"), Display(Name = "Görsel Dosyası"), StringLength(150), Required(ErrorMessage = "Görsel Boş Geçilemez...")]
+        [Column(TypeName = "varchar(150)"), Display(Name = "Görsel Dosyası"), StringLength(150)]
         public string Picture { get; set; }
         public int AnimalID { get; set; }
         public Animal Animal { get; set; }

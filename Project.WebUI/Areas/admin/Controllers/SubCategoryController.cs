@@ -41,11 +41,15 @@ namespace Project.WebUI.Areas.admin.Controllers
         [HttpPost]
         public IActionResult Create(SubCategoryVM model)
         {
+            if (ModelState.IsValid)
+            {
+                if (repoSubCategory.GetBy(x => x.Name == model.SubCategory.Name) == null) repoSubCategory.Add(model.SubCategory);
+                else TempData["hata"] = "Aynı Alt Kategori Girilemez...";
 
-            if (repoSubCategory.GetBy(x => x.Name == model.SubCategory.Name) == null) repoSubCategory.Add(model.SubCategory);
-            else TempData["hata"] = "Aynı Alt Kategori Girilemez...";
+                return RedirectToAction("Index");
 
-            return RedirectToAction("Index");
+            }
+            return View();
         }
 
         public IActionResult Update(int id)

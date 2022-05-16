@@ -18,11 +18,12 @@
                             <h4 class="card-title"><a asp-action="Cancel" class="btn btn-round btn-danger float-right" style="color:#fff">İptal</a></h4>
                             <p class="card-description">
                             </p>
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             <div class="item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Animal.Name">
-                                </label>
+                                @Html.LabelFor(model => model.Animal.Name, htmlAttributes: new { @class = "col-form-label col-md-3 col-sm-3 label-align" })
                                 <div class="col-md-6 col-sm-6 ">
-                                    <input asp-for="@Model.Animal.Name" class="form-control "><span style="color:red" asp-validation-for="@Model.Animal.Name"></span>
+                                    @Html.EditorFor(model => model.Animal.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Animal.Name, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                             <div class="item form-group">
@@ -33,23 +34,23 @@
                                 </div>
                             </div>
                             <div class="item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Animal.Description">
-                                </label>
+                                @Html.LabelFor(model => model.Animal.Description, htmlAttributes: new { @class = "col-form-label col-md-3 col-sm-3 label-align" })
                                 <div class="col-md-6 col-sm-6 ">
-                                    <input asp-for="@Model.Animal.Description" class="editor "><span style="color:red" asp-validation-for="@Model.Animal.Description"></span>
+                                    @Html.EditorFor(model => model.Animal.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Animal.Description, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                             <div class="item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Animal.Information">
-                                </label>
+                                @Html.LabelFor(model => model.Animal.Information, htmlAttributes: new { @class = "col-form-label col-md-3 col-sm-3 label-align" })
                                 <div class="col-md-6 col-sm-6 ">
-                                    <input asp-for="@Model.Animal.Information" class="form-control "><span style="color:red" asp-validation-for="@Model.Animal.Information"></span>
+                                    @Html.EditorFor(model => model.Animal.Information, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Animal.Information, "", new { @class = "text-danger" })
                                 </div>
                                 <div class="item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Animal.Number">
-                                    </label>
+                                    @Html.LabelFor(model => model.Animal.Number, htmlAttributes: new { @class = "col-form-label col-md-3 col-sm-3 label-align" })
                                     <div class="col-md-6 col-sm-6 ">
-                                        <input asp-for="@Model.Animal.Number" class="form-control "><span style="color:red" asp-validation-for="@Model.Animal.Number"></span>
+                                        @Html.EditorFor(model => model.Animal.Number, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Animal.Number, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                             </div>

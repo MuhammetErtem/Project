@@ -34,7 +34,7 @@ namespace Project.WebUI.Areas.admin.Controllers
         {
             ProductVM productVM = new ProductVM
             {
-                Product = new Product{ Enabled = true },
+                Product = new Product { Enabled = true },
                 ProductPicture = new ProductPicture(),
                 Brands = repoBrand.GetAll(),
                 SubCategories = repoSubCategory.GetAll()
@@ -45,6 +45,8 @@ namespace Project.WebUI.Areas.admin.Controllers
         [HttpPost]
         public IActionResult Create(ProductVM model)
         {
+            if (ModelState.IsValid)
+            {
                 var dosyaYolu = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "product");
                 if (Request.Form.Files.Any())
                 {
@@ -58,7 +60,10 @@ namespace Project.WebUI.Areas.admin.Controllers
                 }
                 repoProduct.Add(model.Product);
 
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
+
+            }
+            return View();
         }
 
         public IActionResult Update(int id)

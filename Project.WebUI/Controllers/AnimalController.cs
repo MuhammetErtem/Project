@@ -21,7 +21,6 @@ namespace Project.WebUI.Controllers
             AnimalVM animalVM = new AnimalVM
             {
                 ListAnimal = repoAnimal.GetAll().Include(i => i.AnimalPictures).OrderByDescending(o => o.ID).Where(p => p.Enabled).ToPagedList(page ?? 1, 16),
-                
             };
             return View(animalVM);
         }

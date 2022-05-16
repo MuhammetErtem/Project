@@ -12,13 +12,13 @@ namespace Project.DAL.Entities
     {
         public int ID { get; set; }
 
-        [Column(TypeName = "varchar(50)"), Display(Name = "Başlık"), StringLength(50)]
+        [Column(TypeName = "varchar(50)"), Display(Name = "Başlık"), StringLength(50), Required(ErrorMessage = "Başlık Boş Geçilemez...")]
         public string Title { get; set; }
 
-        [Column(TypeName = "varchar(150)"), Display(Name = "Açıklama"), StringLength(150)]
+        [Column(TypeName = "varchar(150)"), Display(Name = "Açıklama"), StringLength(150), Required(ErrorMessage = "Açıklama Boş Geçilemez...")]
         public string Description { get; set; }
 
-        [Column(TypeName = "text"), Display(Name = "Blog Detayı")]
+        [Column(TypeName = "text"), Display(Name = "Blog Detayı"), Required(ErrorMessage = "Blog Detayı Boş Geçilemez...")]
         public string Detail { get; set; }
 
         [Column(TypeName = "varchar(150)"), Display(Name = "Resim Dosyası"), StringLength(150)]

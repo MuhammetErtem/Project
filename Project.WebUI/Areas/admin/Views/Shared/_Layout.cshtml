@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/css/admincss/assets/css/style.css">
     <link rel="shortcut icon" href="/css/admincss/assets/images/LogoK.png" />
     <link rel="stylesheet" type="text/css" href="/datetimepicker-master/jquery.datetimepicker.css" />
+    <link href="C:\Users\9hkna\.nuget\packages\bootstrap\5.1.3\contentFiles\any\any\wwwroot\css\bootstrap.css" rel="stylesheet" />
 </head>
 <body>
     <div class="container-scroller">
@@ -233,18 +234,18 @@
                             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
                                 <h6 class="p-3 mb-0">Mesaj</h6>
                                 @*@foreach (Contact c in Model.ContactMessageBox)
-                                {
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item preview-item">
-                                        <div class="preview-thumbnail">
-                                            <img src="/css/admincss/assets/images/faces/face4.jpg" alt="image" class="rounded-circle profile-pic">
-                                        </div>
-                                        <div class="preview-item-content">
-                                            <p class="preview-subject ellipsis mb-1">@c.NameSurname</p>
-                                            <p class="text-muted mb-0">@c.RecDate.ToShortDateString() </p>
-                                        </div>
-                                    </a>
-                                }*@
+                                    {
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item preview-item">
+                                            <div class="preview-thumbnail">
+                                                <img src="/css/admincss/assets/images/faces/face4.jpg" alt="image" class="rounded-circle profile-pic">
+                                            </div>
+                                            <div class="preview-item-content">
+                                                <p class="preview-subject ellipsis mb-1">@c.NameSurname</p>
+                                                <p class="text-muted mb-0">@c.RecDate.ToShortDateString() </p>
+                                            </div>
+                                        </a>
+                                    }*@
 
                                 @*<div class="dropdown-divider"></div>
                                     <p class="p-3 mb-0 text-center">4 new messages</p>*@
@@ -382,6 +383,6 @@
     <script src="/css/admincss/assets/js/todolist.js"></script>
     <script src="/css/admincss/assets/js/dashboard.js"></script>
     <script src="/admin/build/js/admin.js"></script>
-    @RenderSection("customScript", false)
+    @RenderSection("customScript", required: false)
 </body>
 </html>

@@ -30,10 +30,11 @@ namespace Project.WebUI.Areas.admin.Controllers
         [HttpPost]
         public IActionResult Create(Brand model)
         {
+
             if (ModelState.IsValid)
             {
                 if (repoBrand.GetBy(x => x.Name == model.Name) == null) repoBrand.Add(model);
-                else if (Request.Form.Files.Any())
+                if (Request.Form.Files.Any())
                 {
                     {
                         string brandPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "brand");
@@ -44,11 +45,12 @@ namespace Project.WebUI.Areas.admin.Controllers
                         }
                         model.Picture = "/img/brand/" + Request.Form.Files["Picture"].FileName;
                     }
-                    repoBrand.Add(model);
                 }
-                else TempData["hata"] = "Aynı marka girilemez...";
+                repoBrand.Add(model);
+                return RedirectToAction("Index");
+
             }
-            return RedirectToAction("Index");
+            return View();
         }
 
         public IActionResult Update(int id)

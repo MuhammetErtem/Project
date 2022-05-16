@@ -31,9 +31,11 @@ namespace Project.WebUI.Areas.admin.Controllers
             if (ModelState.IsValid)
             {
                 if (repoCategory.GetBy(x => x.Name == model.Name) == null) repoCategory.Add(model);
-                else TempData["hata"] = "Aynı kategori girilemez...";                    
+                else TempData["hata"] = "Aynı kategori girilemez...";
+                return RedirectToAction("Index");
+
             }
-            return RedirectToAction("Index");
+            return View();
         }
 
         public IActionResult Update(int id)

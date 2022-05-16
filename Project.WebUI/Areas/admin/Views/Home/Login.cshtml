@@ -1,4 +1,6 @@
-﻿@{
+﻿@model LoginViewModel
+
+@{
     Layout = null;
 }
 <html>
@@ -24,10 +26,14 @@
                                 <div class="form-group">
                                     <label>Mail Adresi</label>
                                     <input type="email" class="form-control p_input" placeholder="Mail Adresi" name="mailaddress" />
+                                    <span asp-validation-for="EMail"></span> <!-- Hata olduğunda bu görünür olur -->
+
                                 </div>
                                 <div class="form-group">
                                     <label>Şifre</label>
-                                    <input type="password" class="form-control p_input" placeholder="Şifre" name="password"/>
+                                    <input type="password" class="form-control p_input" placeholder="Şifre" name="password" />
+                                    <span asp-validation-for="Password"></span> <!-- Hata olduğunda bu görünür olur -->
+
                                 </div>
                                 <div class="form-group d-flex align-items-center justify-content-between">
                                     <div class="form-check">
@@ -55,3 +61,7 @@
     <script src="/css/admincss/assets/js/todolist.js"></script>
 </body>
 </html>
+@section scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
