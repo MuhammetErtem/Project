@@ -28,13 +28,6 @@
                                 </div>
                             </div>
                             <div class="item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.ProductPicture.Path">
-                                </label>
-                                <div class="col-md-6 col-sm-6 ">
-                                    <input asp-for="@Model.ProductPicture.Path" type="file" accept="image/*" class="form-control ">
-                                </div>
-                            </div>
-                            <div class="item form-group">
                                 @Html.LabelFor(model => model.Product.Description, htmlAttributes: new { @class = "col-form-label col-md-3 col-sm-3 label-align" })
                                 <div class="col-md-6 col-sm-6 ">
                                     @Html.EditorFor(model => model.Product.Description, new { htmlAttributes = new { @class = "form-control" } })
@@ -44,7 +37,7 @@
                             <div class="item form-group">
                                 @Html.LabelFor(model => model.Product.Detail, htmlAttributes: new { @class = "col-form-label col-md-3 col-sm-3 label-align" })
                                 <div class="col-md-6 col-sm-6 ">
-                                    @Html.EditorFor(model => model.Product.Detail, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.EditorFor(model => model.Product.Detail, new { htmlAttributes = new { @class = "editor" } })
                                     @Html.ValidationMessageFor(model => model.Product.Detail, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -70,17 +63,21 @@
                                 </div>
                             </div>
                             <div class="item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Product.BrandID">
-                                </label>
                                 <div class="col-md-6 col-sm-6 ">
-                                    <select asp-for="@Model.Product.BrandID" class="form-control" asp-items="@Model.Brands.Select(s=>new SelectListItem{Value=s.ID.ToString(),Text=@s.Name})"></select>
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Product.BrandID">
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <select asp-for="@Model.Product.BrandID" class="form-control" asp-items="@Model.Brands.Select(s=>new SelectListItem{Value=s.ID.ToString(),Text=@s.Name})"></select>
+                                    </div>
                                 </div>
                             </div>
                             <div class="item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Product.SubCategoryID">
-                                </label>
                                 <div class="col-md-6 col-sm-6 ">
-                                    <select asp-for="@Model.Product.SubCategoryID" class="form-control" asp-items="@Model.SubCategories.Select(s=>new SelectListItem{Value=s.ID.ToString(),Text=@s.Name})"></select>
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" asp-for="@Model.Product.SubCategoryID">
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <select asp-for="@Model.Product.SubCategoryID" class="form-control" asp-items="@Model.SubCategories.Select(s=>new SelectListItem{Value=s.ID.ToString(),Text=@s.Name})"></select>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">

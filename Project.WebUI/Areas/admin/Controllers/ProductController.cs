@@ -7,6 +7,9 @@ using System.IO;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using X.PagedList;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections.Generic;
+using System.Web;
 
 namespace Project.WebUI.Areas.admin.Controllers
 {
@@ -45,9 +48,30 @@ namespace Project.WebUI.Areas.admin.Controllers
         [HttpPost]
         public IActionResult Create(ProductVM model)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) repoProduct.Add(model.Product);
+            return View();
+        }
+
+
+        public IActionResult ProductPictures()
+        {
+
+            ProductPictureVM productPictureVM = new ProductPictureVM
             {
-                var dosyaYolu = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "product");
+                Product = new Product { Enabled = true },
+                Products = repoProduct.GetAll(),
+                ProductPicture = new ProductPicture(),
+            };
+            return View(productPictureVM);
+        }
+
+        [HttpPost]
+        public IActionResult ProductPictures(ProductVM model)
+        {
+            var dosyaYolu = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "product");
+            var imageList = Directory.GetFiles(dosyaYolu);
+            foreach (var image in imageList)
+            {
                 if (Request.Form.Files.Any())
                 {
                     string productPath = dosyaYolu;
@@ -58,12 +82,9 @@ namespace Project.WebUI.Areas.admin.Controllers
                     }
                     model.ProductPicture.Path = "/img/product/" + Request.Form.Files["ProductPicture.Path"].FileName;
                 }
-                repoProduct.Add(model.Product);
-
-                return RedirectToAction("Index");
-
-            }
-            return View();
+                repoProductPicture.Add(model.ProductPicture);
+            } 
+            return RedirectToAction("Index");
         }
 
         public IActionResult Update(int id)

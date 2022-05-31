@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Project.WebUI.Areas.admin.ViewModels
 {
-    public class ProductVM
+    public class ProductPictureVM
     {
         public Product Product { get; set; }
         public ProductPicture ProductPicture { get; set; }

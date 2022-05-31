@@ -1,5 +1,6 @@
 ﻿using Project.DAL.DbContexts;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -10,6 +11,7 @@ namespace Project.BL.Repositories
 {
     public class SqlRepo<T> : IRepo<T> where T : class
     {
+        public IEnumerable Products;
         SqlContext db;
         public SqlRepo(SqlContext _db)
         {

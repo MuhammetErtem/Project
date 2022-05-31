@@ -36,30 +36,31 @@
                                 <tbody>
                                     @foreach (Product p in Model)
                                     {
-                                        <tr class="@(i%2==0?"even":"odd") pointer">
+                                    <tr class="@(i%2==0?"even":"odd") pointer">
 
-                                            <td class="py-1" style="vertical-align:middle"><a>@p.Name</a></td>
-                                            <td class="py-1" style="vertical-align:middle"><a>@p.Brand.Name</a></td>
-                                            @*<td class="py-1" style="vertical-align:middle"><a>@p.SubCategory.Name</a></td>*@
-                                            <td class="py-1" style="vertical-align:middle"><a>@p.Stock</a></td>
-                                            <td class="py-1" style="vertical-align:middle"><a>@p.Price</a></td>
-                                            <td>
-                                                @if (p.Enabled)
-                                                {
-                                                    <span class="text-primary">
-                                                        <i class="mdi mdi-playlist-check"></i>
-                                                    </span>
-                                                }
-                                                else
-                                                {
-                                                    <span class="text-danger">
-                                                        <i class="mdi mdi-playlist-remove"></i>
-                                                    </span>
-                                                }
-                                            </td>
-                                            <th><a asp-action="Update" asp-route-id="@p.ID" class="btn btn-round btn-success float-right">Düzenle</a></th>
-                                            <th><button onclick="deleteRecord('@p.Name','product',@p.ID)" class="btn btn-round btn-danger float-right">Sil</button></th>
-                                        </tr>
+                                        <td class="py-1" style="vertical-align:middle"><a>@p.Name</a></td>
+                                        <td class="py-1" style="vertical-align:middle"><a>@p.Brand.Name</a></td>
+                                        @*<td class="py-1" style="vertical-align:middle"><a>@p.SubCategory.Name</a></td>*@
+                                        <td class="py-1" style="vertical-align:middle"><a>@p.Stock</a></td>
+                                        <td class="py-1" style="vertical-align:middle"><a>@p.Price</a></td>
+                                        <td>
+                                            @if (p.Enabled)
+                                            {
+                                                <span class="text-primary">
+                                                    <i class="mdi mdi-playlist-check"></i>
+                                                </span>
+                                            }
+                                            else
+                                            {
+                                                <span class="text-danger">
+                                                    <i class="mdi mdi-playlist-remove"></i>
+                                                </span>
+                                            }
+                                        </td>
+                                        <th><a asp-action="ProductPictures" asp-route-id="@p.ID" class="btn btn-round btn-primary float-right">Fotoğraf Ekle</a></th>
+                                        <th><a asp-action="Update" asp-route-id="@p.ID" class="btn btn-round btn-success float-right">Düzenle</a></th>
+                                        <th><button onclick="deleteRecord('@p.Name','product',@p.ID)" class="btn btn-round btn-danger float-right">Sil</button></th>
+                                    </tr>
                                         i++;
                                     }
                                 </tbody>

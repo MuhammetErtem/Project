@@ -6,6 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 using System.IO;
 using System.Linq;
 using X.PagedList;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using System;
 
 namespace Project.WebUI.Areas.admin.Controllers
 {
@@ -33,27 +37,43 @@ namespace Project.WebUI.Areas.admin.Controllers
         [HttpPost]
         public IActionResult Create(AnimalVM model)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) repoAnimal.Add(model.Animal);
+            return View();
+        }
+        public IActionResult AnimalPictures()
+        {
+            AnimalVM animalVM = new AnimalVM()
+            {
+                Animal = new Animal { Enabled = true },
+                Animals = repoAnimal.GetAll(),
+                AnimalPicture = new AnimalPicture(),
+            };
+            return View(animalVM);
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AnimalPictures(AnimalVM model)
+        {
+            var dosyaYolu = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "animal");
+            var imageList = Directory.GetFiles(dosyaYolu);
+            foreach (var image in imageList)
             {
                 if (Request.Form.Files.Any())
                 {
-                    string animalPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "animal");
-                    if (!Directory.Exists(animalPath)) Directory.CreateDirectory(animalPath);
-                    using (var stream = new FileStream(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "animal", Request.Form.Files["Picture"].FileName), FileMode.Create))
+                    string animalPicture = dosyaYolu;
+                    if (!Directory.Exists(animalPicture)) Directory.CreateDirectory(animalPicture);
+                    using (var dosyaAkisi = new FileStream(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "animal", Request.Form.Files["AnimalPicture.Picture"].FileName), FileMode.Create))
                     {
-                        Request.Form.Files["Picture"].CopyTo(stream);
+                        Request.Form.Files["AnimalPicture.Picture"].CopyTo(dosyaAkisi);
                     }
-                    model.AnimalPicture.Picture = "/img/animal/" + Request.Form.Files["Picture"].FileName;
+
+                    model.AnimalPicture.Picture = "/img/animal/" + Request.Form.Files["AnimalPicture.Picture"].FileName;
                 }
-
-                repoAnimal.Add(model.Animal);
-                model.AnimalPicture.AnimalID = model.Animal.ID.GetHashCode();
-                return RedirectToAction("Index");
-
+                repoAnimalPicture.Add(model.AnimalPicture);
             }
-            return View();
+            return RedirectToAction("Index");
         }
-
         public IActionResult Update(int id)
         {
             AnimalVM animalVM = new AnimalVM

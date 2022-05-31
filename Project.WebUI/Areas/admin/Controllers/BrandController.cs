@@ -34,21 +34,24 @@ namespace Project.WebUI.Areas.admin.Controllers
             if (ModelState.IsValid)
             {
                 if (repoBrand.GetBy(x => x.Name == model.Name) == null) repoBrand.Add(model);
-                if (Request.Form.Files.Any())
+                else TempData["hata"] = "Aynı marka girilemez...";
+
                 {
+                    if (Request.Form.Files.Any())
                     {
-                        string brandPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "brand");
-                        if (!Directory.Exists(brandPath)) Directory.CreateDirectory(brandPath);
+                        string brandPicture = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "brand");
+                        if (!Directory.Exists(brandPicture)) Directory.CreateDirectory(brandPicture);
                         using (var stream = new FileStream(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "brand", Request.Form.Files["Picture"].FileName), FileMode.Create))
                         {
                             Request.Form.Files["Picture"].CopyTo(stream);
                         }
                         model.Picture = "/img/brand/" + Request.Form.Files["Picture"].FileName;
                     }
+
                 }
+
                 repoBrand.Add(model);
                 return RedirectToAction("Index");
-
             }
             return View();
         }

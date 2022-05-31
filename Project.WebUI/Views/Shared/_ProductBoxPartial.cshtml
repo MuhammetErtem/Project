@@ -2,14 +2,23 @@
 
 <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
     <div class="product__item">
-        <div class="product__item__pic set-bg" data-setbg="@Model.ProductPictures.FirstOrDefault().Path">
+        <div class="product__item__pic set-bg">
+
+            @if (Model.ProductPictures.Any())
+            {
+        <img class="product__item__pic set-bg" src="@Model.ProductPictures.FirstOrDefault().Path"> }
+            else
+            {
+        <img class="product__item__pic set-bg" src="/img/product/noproduct.png">}
+
+
             <span class="label">Yeni</span>
             @if (Model.Stock > 0)
             {
-             <span class="label" style="color: #ffffff; background: #36a300">Yeni</span>}
-            else
-            {
-            <span class="label " style="color: #ffffff; background: #111111">Tükendi</span> }
+        <span class="label" style="color: #ffffff; background: #36a300">Yeni</span>}
+    else
+    {
+        <span class="label " style="color: #ffffff; background: #111111">Tükendi</span>}
             <ul class="product__hover">
                 <li><a href="#"><img src="/img/icon/heart.png" alt=""><span>Favorilerine Ekle</span></a></li>
                 <li><a asp-controller="Product" asp-action="Detail" asp-route-name="@GeneralTool.ConvertURL(Model.Name)" asp-route-id="@Model.ID"><img src="/img/icon/search.png" alt=""><span>İncele</span></a></li>
@@ -26,6 +35,7 @@
                 <i class="fa fa-star-o"></i>
             </div>
             <h5>@Model.Price ₺</h5>
-            </div>
         </div>
+    </div>
 </div>
+
